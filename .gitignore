@@ -1,10 +1,11 @@
-# Originales sueltos (ya copiados al módulo) — no van al repo público
-freepik_*.png
-freepik_*.mp4
-icono.png
-banner_original.png
-screenshot_*.png
-*.pdf
+# Originales sueltos al ROOT del repo (ya copiados al módulo) — no van al repo público
+# Anchoreados con / para no afectar archivos en subfolders.
+/freepik_*.png
+/freepik_*.mp4
+/icono.png
+/banner_original.png
+/screenshot_*.png
+/*.pdf
 
 # Python
 __pycache__/
