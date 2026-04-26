@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_section_type_list" model="ir.ui.view">
+        <field name="name">impr.section.type.list</field>
+        <field name="model">impr.section.type</field>
+        <field name="arch" type="xml">
+            <list string="Tipos de Sección" editable="bottom" class="impr_no_selector">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="es_caratula" widget="boolean_toggle"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_section_type_form" model="ir.ui.view">
+        <field name="name">impr.section.type.form</field>
+        <field name="model">impr.section.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archivado" bg_color="text-bg-danger" invisible="active"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="es_caratula"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-info" role="alert" invisible="not es_caratula">
+                        Este tipo usa reglas de carátula: maqui=1.0 y no participa en
+                        doblado/alce/cosido por defecto.
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_section_type" model="ir.actions.act_window">
+        <field name="name">Tipos de Sección</field>
+        <field name="res_model">impr.section.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Crear un tipo de sección</p>
+            <p>Los tipos de sección determinan el comportamiento de cálculo (carátula vs interior).</p>
+        </field>
+    </record>
+
+    <!-- Menuitem definido en views/menus.xml junto al resto del menú Configuración. -->
+
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Paper materials catalog — INTENTIONALLY EMPTY.
+
+        Each printing shop has its own supplier catalog and pricing.
+        After installing the module, load your own materials from
+        Configuration > Print Quoter > Paper Materials.
+
+        Schema (impr.paper.material):
+          name             Char     Material name (e.g. "Bond 75g 70x100")
+          largo            Float    Sheet length (cm)
+          ancho            Float    Sheet width (cm)
+          gramaje          Float    Weight per m² (g/m²)
+          precio_kg        Float    Price per kg (USD, including VAT)
+          unidad_paquete   Integer  Sheets per package (use 1 for cardboard)
+
+        For cardboard items (unidad_paquete = 1), precio_kg is interpreted
+        as $/unit directly (not $/kg).
+    -->
+    <data noupdate="1">
+    </data>
+</odoo>

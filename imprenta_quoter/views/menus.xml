@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Menú principal -->
+    <menuitem id="menu_impr_root"
+              name="Cotizaciones"
+              sequence="100"
+              web_icon="imprenta_quoter,static/description/icon.png"/>
+
+    <!-- Cotizaciones -->
+    <menuitem id="menu_impr_quotes"
+              name="Mis Cotizaciones"
+              parent="menu_impr_root"
+              action="action_print_quote"
+              sequence="10"/>
+
+    <!-- Configuración -->
+    <menuitem id="menu_impr_config"
+              name="Configuración"
+              parent="menu_impr_root"
+              sequence="90"/>
+
+    <menuitem id="menu_impr_materials"
+              name="Materiales de papel"
+              parent="menu_impr_config"
+              action="action_paper_material"
+              sequence="10"/>
+
+    <menuitem id="menu_impr_finishing"
+              name="Acabados y Encuadernados"
+              parent="menu_impr_config"
+              action="action_finishing_service"
+              sequence="20"/>
+
+    <menuitem id="menu_impr_process_templates"
+              name="Plantillas de proceso"
+              parent="menu_impr_config"
+              action="action_process_template"
+              sequence="30"/>
+
+    <menuitem id="menu_section_type"
+              name="Tipos de sección"
+              parent="menu_impr_config"
+              action="action_section_type"
+              sequence="35"/>
+
+    <menuitem id="menu_impr_price_update"
+              name="Actualizar precios de papel"
+              parent="menu_impr_config"
+              action="action_price_update_wizard"
+              sequence="40"/>
+
+    <menuitem id="menu_wip_closing"
+              name="Cierre WIP"
+              parent="menu_impr_config"
+              action="action_wip_closing_wizard"
+              sequence="50"/>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Contactos — separación Clientes / Proveedores
+    ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- Ocultar el submenú nativo "Contactos" (muestra todo mezclado) -->
+    <record id="contacts.res_partner_menu_contacts" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- ACTION: Clientes (res.partner con customer_rank > 0) -->
+    <record id="action_partner_clientes" model="ir.actions.act_window">
+        <field name="name">Clientes</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form,activity</field>
+        <field name="domain">[('customer_rank','>',0)]</field>
+        <field name="context">{
+            'default_customer_rank': 1,
+            'search_default_customer': 1,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear primer cliente
+            </p>
+            <p>
+                Esta vista muestra únicamente los contactos marcados como clientes
+                (customer_rank &gt; 0). Al crear uno nuevo desde aquí, quedará
+                automáticamente marcado como cliente.
+            </p>
+        </field>
+    </record>
+
+    <!-- ACTION: Proveedores (res.partner con supplier_rank > 0) -->
+    <record id="action_partner_proveedores" model="ir.actions.act_window">
+        <field name="name">Proveedores</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form,activity</field>
+        <field name="domain">[('supplier_rank','>',0)]</field>
+        <field name="context">{
+            'default_supplier_rank': 1,
+            'search_default_supplier': 1,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear primer proveedor
+            </p>
+            <p>
+                Esta vista muestra únicamente los contactos marcados como proveedores
+                (supplier_rank &gt; 0). Al crear uno nuevo desde aquí, quedará
+                automáticamente marcado como proveedor.
+            </p>
+        </field>
+    </record>
+
+    <!-- Ocultar submenú nativo "Contactos" que muestra TODOS mezclados -->
+    <record id="contacts.res_partner_menu_contacts" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- MENÚ: Clientes → submenú por defecto al abrir Contactos -->
+    <menuitem id="menu_impr_clientes"
+              name="Clientes"
+              parent="contacts.menu_contacts"
+              action="action_partner_clientes"
+              sequence="1"/>
+
+    <!-- MENÚ: Proveedores -->
+    <menuitem id="menu_impr_proveedores"
+              name="Proveedores"
+              parent="contacts.menu_contacts"
+              action="action_partner_proveedores"
+              sequence="2"/>
+
+    <!-- Importar clientes/proveedores → bajo el menú nativo de Contactos -->
+    <menuitem id="menu_impr_import_partners"
+              name="Importar desde CSV"
+              parent="contacts.menu_contacts"
+              action="action_import_partners_wizard"
+              sequence="50"/>
+
+</odoo>

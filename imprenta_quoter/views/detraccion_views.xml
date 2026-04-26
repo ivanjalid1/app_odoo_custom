@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACCOUNT.MOVE — Pestaña Detracción SUNAT (SPOT)
+    ═══════════════════════════════════════════════════════════════ -->
+    <record id="view_move_form_inherit_impr_detraccion" model="ir.ui.view">
+        <field name="name">account.move.form.impr.detraccion</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Detracción SUNAT" name="detraccion_tab"
+                      invisible="move_type not in ['in_invoice', 'in_refund', 'out_invoice']">
+                    <group>
+                        <group string="Configuración">
+                            <field name="impr_detraccion_id"
+                                   options="{'no_create': True}"/>
+                            <field name="impr_detraccion_porcentaje" readonly="1"/>
+                        </group>
+                        <group string="Montos">
+                            <field name="amount_total" readonly="1" string="Total factura"/>
+                            <field name="impr_detraccion_monto" readonly="1"/>
+                            <field name="impr_monto_neto_proveedor" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Estado del depósito SPOT"
+                           invisible="not impr_detraccion_id">
+                        <field name="impr_detraccion_pagada"/>
+                        <field name="impr_detraccion_fecha_pago"
+                               required="impr_detraccion_pagada == True"/>
+                        <field name="impr_detraccion_nro_constancia"
+                               required="impr_detraccion_pagada == True"/>
+                    </group>
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not impr_detraccion_id or impr_detraccion_monto == 0.0">
+                        <strong>Detracción SPOT activa.</strong>
+                        El monto de detracción debe depositarse en la cuenta del
+                        Banco de la Nación del proveedor ANTES de pagar la diferencia.
+                    </div>
+                    <div invisible="not impr_detraccion_id or impr_detraccion_pagada == True">
+                        <button name="action_marcar_detraccion_pagada"
+                                type="object"
+                                string="Marcar como depositada"
+                                class="btn-primary"
+                                confirm="¿Confirma que ya realizó el depósito de la detracción en el Banco de la Nación?"/>
+                    </div>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         RES.PARTNER — Detracción por defecto
+    ═══════════════════════════════════════════════════════════════ -->
+    <record id="view_partner_form_inherit_impr_detraccion" model="ir.ui.view">
+        <field name="name">res.partner.form.impr.detraccion</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="inside">
+                <group string="SUNAT — Detracción SPOT" name="impr_sunat_detraccion">
+                    <field name="impr_detraccion_id"
+                           string="Tipo de detracción por defecto"
+                           options="{'no_create': True}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

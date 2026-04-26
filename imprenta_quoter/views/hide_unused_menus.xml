@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Ocultar menús no utilizados -->
+
+    <!-- Discuss / Conversaciones -->
+    <record id="mail.menu_root_discuss" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- Reactivar Contactos (fue desactivado antes, ahora lo necesitamos para importar) -->
+    <record id="contacts.menu_contacts" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+    </record>
+
+    <!-- Dashboards / Spreadsheet -->
+    <record id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

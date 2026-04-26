@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Token apis.net.pe para tipo de cambio SUNAT (mismo del Odoo 15) -->
+        <record id="param_tc_token" model="ir.config_parameter">
+            <field name="key">indomin.api_token_integration</field>
+            <field name="value">apis-token-14021.qPoLq0tK8R92RG4wnlUUdxnFBqeI89Ut</field>
+        </record>
+
+        <!-- Acción servidor para el cron -->
+        <record id="action_impr_update_tc" model="ir.actions.server">
+            <field name="name">Actualizar TC USD/PEN desde SUNAT</field>
+            <field name="model_id" ref="base.model_res_currency"/>
+            <field name="state">code</field>
+            <field name="code">model._impr_update_usd_rate()</field>
+        </record>
+
+        <!-- Cron: diario a las 9:00 AM -->
+        <record id="cron_impr_update_tc" model="ir.cron">
+            <field name="cron_name">Actualizar TC USD/PEN desde SUNAT</field>
+            <field name="ir_actions_server_id" ref="action_impr_update_tc"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+            <field name="nextcall" eval="(DateTime.now()).strftime('%Y-%m-%d 09:00:00')"/>
+        </record>
+
+    </data>
+</odoo>

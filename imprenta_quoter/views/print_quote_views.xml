@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FORM VIEW — réplica exacta del Excel
+         Convención: solo las celdas verdes del Excel son editables.
+         El resto es calculado por fórmula (readonly).
+    ═══════════════════════════════════════════════════════════════ -->
+    <record id="view_print_quote_form" model="ir.ui.view">
+        <field name="name">impr.print.quote.form</field>
+        <field name="model">impr.print.quote</field>
+        <field name="arch" type="xml">
+            <form string="Cotización">
+                <header>
+                    <button name="action_send" string="Enviar" type="object"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve" string="Aprobar" type="object"
+                            class="btn-primary" invisible="state != 'sent'"/>
+                    <button name="action_liberar" string="LIBERAR" type="object"
+                            class="btn-success"
+                            confirm="¿Confirma? Se creará la Orden de Venta y la Orden de Producción."
+                            invisible="state != 'approved'"/>
+                    <button name="action_cancel" string="Cancelar" type="object"
+                            invisible="state in ('production','done','cancelled')"/>
+                    <button name="action_draft" string="Volver a borrador" type="object"
+                            invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,sent,approved,production,done"/>
+                </header>
+                <sheet>
+
+                    <!-- ══════════════════════════════════════════
+                         CABECERA — 3 columnas para que los tabs queden visibles sin scroll
+                    ══════════════════════════════════════════ -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <group string="Datos">
+                                <field name="name" readonly="1" string="Presupuesto Nro"/>
+                                <field name="client_id" string="Cliente"/>
+                                <field name="nombre" string="Trabajo"/>
+                                <field name="date" string="Fecha"/>
+                                <field name="tc" string="TC"/>
+                                <field name="sale_order_id" readonly="1"
+                                       invisible="not sale_order_id"/>
+                                <field name="production_id" readonly="1"
+                                       invisible="not production_id"/>
+                            </group>
+                        </div>
+                        <div class="col-md-4">
+                            <group string="Formato">
+                                <field name="ancho" string="Ancho (cm)"/>
+                                <field name="largo" string="Largo (cm)"/>
+                                <field name="tiraje_principal" string="Tiraje"/>
+                                <field name="paginas_total" string="Páginas"/>
+                            </group>
+                        </div>
+                        <div class="col-md-4">
+                            <group string="Empaque">
+                                <field name="peso_x_libro" string="Peso x libro (kg)"
+                                       readonly="1" digits="[12,3]"
+                                       help="Calculado desde papel_ids (Excel B108)."/>
+                                <field name="peso_total" string="Peso total (kg)"
+                                       readonly="1" digits="[12,2]"
+                                       help="= peso x libro × tiraje"/>
+                                <field name="peso_max_caja" string="Peso máx. caja (kg)"
+                                       help="Peso máximo por caja (default 12)."/>
+                                <field name="libros_x_caja" string="Libros x caja"
+                                       readonly="1"
+                                       help="= floor(peso máx caja / peso x libro)"/>
+                            </group>
+                        </div>
+                    </div>
+
+                    <!-- Campos ocultos que siguen funcionando tras bambalinas -->
+                    <group invisible="1">
+                        <field name="paginas_cara"/>
+                        <field name="aprovechamiento"/>
+                        <field name="acabado"/>
+                        <field name="clisse"/>
+                        <field name="nota"/>
+                        <field name="material_caratula_id"/>
+                        <field name="colores_caratula"/>
+                        <field name="paginas_int"/>
+                        <field name="interior_ids"/>
+                    </group>
+
+                    <!-- ══════════════════════════════════════════
+                         TABS POR SECCIÓN (una por cuadro del Excel)
+                    ══════════════════════════════════════════ -->
+                    <notebook>
+
+                        <!-- ═══ TIRAJES ALTERNATIVOS ═══ -->
+                        <page string="Tirajes" name="tirajes">
+                            <field name="tiraje_ids" nolabel="1">
+                                <list editable="bottom" limit="5">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="tiraje" string="Tiraje"/>
+                                    <field name="pct_utilidad" string="Utilidad %"/>
+                                    <field name="precio_total" string="Precio s/IGV" readonly="1"
+                                           decoration-bf="1" class="text-primary"/>
+                                    <field name="precio_unitario" string="P. Unit. s/IGV" readonly="1"/>
+                                    <field name="precio_total_igv" string="Precio c/IGV" readonly="1"
+                                           decoration-bf="1" class="text-success"/>
+                                    <field name="precio_unitario_igv" string="P. Unit. c/IGV" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <!-- ═══ PAPELES ═══ -->
+                        <page string="Papeles" name="papeles">
+                            <button name="action_actualizar_secciones" type="object"
+                                    string="↻ Actualizar secciones" class="btn-primary mb-2"
+                                    help="Recalcula peso x libro, libros x caja, cantidades de encuadernado, empaquetado y transporte según el tiraje y los papeles actuales. Útil después de cambiar el tiraje, agregar/eliminar papeles o ajustar el peso máx. caja."/>
+                            <field name="papel_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="tipo_id" string="Tipo"
+                                           options="{'no_create': True, 'no_open': True}"/>
+                                    <field name="tipo" column_invisible="1"/>
+                                    <field name="material_id" string="Material"/>
+                                    <field name="paginas" string="Pag"/>
+                                    <field name="aprovechamiento" string="Rendim" digits="[16,0]"/>
+                                    <field name="pliegos" string="Pliegos" readonly="1" digits="[16,2]"/>
+                                    <field name="demasia" string="Demasia" digits="[16,0]"/>
+                                    <field name="paquetes" string="Paquetes" readonly="1" digits="[16,0]"/>
+                                    <field name="precio_unit" string="P Unit" readonly="1" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"
+                                           decoration-bf="1" class="text-primary"/>
+                                    <field name="largo" string="Largo" readonly="1" digits="[16,2]"/>
+                                    <field name="ancho" string="Ancho" readonly="1" digits="[16,2]"/>
+                                    <field name="peso" string="Peso" readonly="1" digits="[16,2]"/>
+                                    <field name="q_pliegos" string="Q papel" readonly="1" digits="[16,0]"
+                                           decoration-bf="1" class="text-primary"/>
+                                    <field name="precio_kg" string="$ Kg" digits="[16,2]"/>
+                                    <field name="precio_resma" string="$ Resma" readonly="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_papeles" string="Total PAPELES" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ PLACAS ═══ Material/Pag/Rendim/Pliegos vienen de PAPELES -->
+                        <page string="Placas" name="placas">
+                            <field name="placa_ids" nolabel="1">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="tipo" readonly="1"/>
+                                    <field name="material_id" string="Material" readonly="1" force_save="1"/>
+                                    <field name="pagina" string="Pag" readonly="1" force_save="1"/>
+                                    <field name="aprovechamiento" string="Rendim" readonly="1" force_save="1" digits="[16,0]"/>
+                                    <field name="pliegos" string="Pliegos" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="maqui" string="Maqui"/>
+                                    <field name="color_t" string="Color T" digits="[16,0]"/>
+                                    <field name="color_r" string="Color R" digits="[16,0]"/>
+                                    <field name="placas" string="Placas" readonly="1" digits="[16,0]"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_placas" string="Total PLACAS" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ OFFSET ═══ Material/Pag/Rendim/Pliegos/Q hojas vienen de PAPELES -->
+                        <page string="Offset" name="offset">
+                            <field name="offset_ids" nolabel="1">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="tipo" readonly="1"/>
+                                    <field name="material_id" string="Material" readonly="1" force_save="1"/>
+                                    <field name="pagina" string="Pag" readonly="1" force_save="1"/>
+                                    <field name="aprovechamiento" string="Rendim" readonly="1" force_save="1" digits="[16,0]"/>
+                                    <field name="pliegos" string="Pliegos" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="maqui" string="Maqui" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="factor" column_invisible="1"/>
+                                    <field name="q_hojas" string="Q hojas" readonly="1" digits="[16,0]"/>
+                                    <field name="q_pliegos" string="Q Pliegos" readonly="1" digits="[16,0]"
+                                           decoration-bf="1" class="text-primary"/>
+                                    <field name="color_t" string="Color T" readonly="1" digits="[16,0]"/>
+                                    <field name="color_r" string="Color R" readonly="1" digits="[16,0]"/>
+                                    <field name="tiraje" string="Tiraje" readonly="1" digits="[16,0]"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"
+                                           decoration-bf="1" class="text-primary"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_offset" string="Total OFFSET" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ ACABADOS CARÁTULA ═══ -->
+                        <page string="Acabados Carátula" name="acabados">
+                            <field name="acabado_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="service_id" string="Acabado"
+                                           options="{'no_open': True}"/>
+                                    <field name="aplica_a" string="Aplica a"/>
+                                    <field name="q_pliegos" string="Q Pliegos" digits="[16,0]"
+                                           decoration-bf="1" class="text-primary"/>
+                                    <field name="clisse" string="C Fijo"/>
+                                    <field name="tiraje" string="Tiraje"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"
+                                           decoration-bf="1" class="text-primary"/>
+                                    <field name="tipo" column_invisible="1"/>
+                                    <field name="factor" column_invisible="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_acabados" string="Total ACABADOS" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ DOBLADO ═══ Pag/Rendim/Pliegos/Maqui/Q hojas vienen de PAPELES+OFFSET -->
+                        <page string="Doblado" name="doblado">
+                            <field name="doblado_ids" nolabel="1">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="tipo" readonly="1"/>
+                                    <field name="material_id" string="Material" readonly="1" force_save="1"/>
+                                    <field name="pagina" string="Pag" readonly="1" force_save="1"/>
+                                    <field name="aprovechamiento" string="Rendim" readonly="1" force_save="1" digits="[16,0]"/>
+                                    <field name="pliegos" string="Pliegos" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="maqui" string="Maqui" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="q_hojas" string="Q hojas" readonly="1" digits="[16,0]"/>
+                                    <field name="q_pliegos" string="Q Pliegos" readonly="1" digits="[16,0]"/>
+                                    <field name="factor" string="Factor" digits="[16,2]"/>
+                                    <field name="x_doblar" string="x doblar" readonly="1" digits="[16,2]"/>
+                                    <field name="tiraje" string="Tiraje" readonly="1"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_doblado" string="Total DOBLADO" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ ALCE ═══ Pag/Rendim/Pliegos/Maqui/Q hojas/Q Pliegos de PAPELES+OFFSET; Doblados del DOBLADO -->
+                        <page string="Alce" name="alce">
+                            <field name="alce_ids" nolabel="1">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="tipo" readonly="1"/>
+                                    <field name="material_id" string="Material" readonly="1" force_save="1"/>
+                                    <field name="pagina" string="Pag" readonly="1" force_save="1"/>
+                                    <field name="aprovechamiento" string="Rendim" readonly="1" force_save="1" digits="[16,0]"/>
+                                    <field name="pliegos" string="Pliegos" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="maqui" string="Maqui" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="q_hojas" string="Q hojas" readonly="1" digits="[16,0]"/>
+                                    <field name="q_pliegos_off" string="Q Pliegos" readonly="1" digits="[16,0]"/>
+                                    <field name="factor" string="Factor" digits="[16,2]"/>
+                                    <field name="q_pliegos" string="Doblados" readonly="1" digits="[16,0]"/>
+                                    <field name="x_alzar" string="x Alzar" readonly="1" digits="[16,2]"/>
+                                    <field name="tiraje" string="Tiraje" readonly="1"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_alce" string="Total ALCE" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ COSIDO ═══ Pag/Demasía/Tiraje del PAPEL+cabecera -->
+                        <page string="Cosido" name="cosido">
+                            <field name="cosido_ids" nolabel="1">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="tipo" readonly="1"/>
+                                    <field name="material_id" string="Material" readonly="1" force_save="1"/>
+                                    <field name="pagina" string="Pag" readonly="1" force_save="1"/>
+                                    <field name="aprovechamiento" string="Rendim" readonly="1" force_save="1" digits="[16,0]"/>
+                                    <field name="pliegos" string="Pliegos" readonly="1" force_save="1" digits="[16,2]"/>
+                                    <field name="demasia" string="Demasia" readonly="1" force_save="1" digits="[16,0]"/>
+                                    <field name="tiraje_libro" string="tiraje" readonly="1" force_save="1"/>
+                                    <field name="cuadernillo" string="Cdrnllo pag"/>
+                                    <field name="x_coser" string="x coser" readonly="1" digits="[16,2]"/>
+                                    <field name="tiraje" string="Tiraje" readonly="1"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_cosido" string="Total COSIDO" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ TROQUELADO ═══ Solo las 7 columnas del Excel + sección -->
+                        <page string="Troquelado" name="troquelado">
+                            <field name="troquelado_ids" nolabel="1">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="tipo" readonly="1"/>
+                                    <field name="q_hojas" string="Q hojas" readonly="1" digits="[16,0]"/>
+                                    <field name="q_pliegos" string="Q Pliegos" readonly="1" digits="[16,0]"/>
+                                    <field name="factor" string="Factor" digits="[16,2]"/>
+                                    <field name="c_fijo" string="C Fijo" digits="[16,2]"/>
+                                    <field name="tiraje" string="Tiraje" readonly="1"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                    <field name="material_id" column_invisible="1"/>
+                                    <field name="pagina" column_invisible="1"/>
+                                    <field name="aprovechamiento" column_invisible="1"/>
+                                    <field name="pliegos" column_invisible="1"/>
+                                    <field name="maqui" column_invisible="1"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_troquelado" string="Total TROQUELADO" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ ENCUADERNADO ═══ -->
+                        <page string="Encuadernado" name="encuadernado">
+                            <field name="encuadernado_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="service_id" string="Acabado"
+                                           options="{'no_create': True, 'no_open': True}"/>
+                                    <field name="tipo" string="Descripción" optional="hide"/>
+                                    <field name="cantidad" string="Tiraje"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                    <field name="peso_x_libro" column_invisible="1" digits="[16,2]"/>
+                                    <field name="peso_total" column_invisible="1" digits="[16,2]"/>
+                                    <field name="peso_max_caja" column_invisible="1" digits="[16,2]"/>
+                                    <field name="libros_x_caja" column_invisible="1"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_encuadernado" string="Total ENCUADERNADO" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ CORTES ═══ -->
+                        <page string="Cortes" name="cortes">
+                            <field name="corte_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="tipo" string="Tipo"/>
+                                    <field name="cantidad" string="Tiraje" readonly="1"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_cortes" string="Total CORTES" readonly="1" digits="[16,2]"/>
+                            </group>
+                        </page>
+
+                        <!-- ═══ EMPAQUETADO + TRANSPORTE ═══ -->
+                        <page string="Empaque" name="empaque">
+
+                            <separator string="Empaquetado"/>
+                            <field name="empaquetado_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="tipo" string="Tipo"/>
+                                    <field name="peso_x_libro" string="Peso x libro en Kg"
+                                           invisible="tipo != 'caja'"/>
+                                    <field name="peso_total" string="Peso Total Kg"
+                                           invisible="tipo != 'caja'"/>
+                                    <field name="peso_max_caja" string="PesoxCaja"
+                                           decoration-bf="1" class="text-primary"
+                                           invisible="tipo != 'caja'"/>
+                                    <field name="libros_x_caja" string="Libros x caja"
+                                           invisible="tipo != 'caja'"/>
+                                    <field name="cantidad" string="Cantidad"/>
+                                    <field name="precio_unit" string="P Unit"/>
+                                    <field name="subtotal" string="P Total" readonly="1"
+                                           decoration-bf="1" class="text-primary"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_empaquetado" readonly="1" digits="[16,2]"/>
+                            </group>
+
+                            <separator string="Transporte"/>
+                            <field name="transporte_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="tipo" string="Transporte"/>
+                                    <field name="peso_total" string="Peso Total" readonly="1" digits="[16,2]"/>
+                                    <field name="cantidad" string="Cantidad" readonly="1"/>
+                                    <field name="precio_unit" string="P Unit" digits="[16,2]"/>
+                                    <field name="subtotal" string="P Total" readonly="1" digits="[16,2]"/>
+                                </list>
+                            </field>
+                            <group class="oe_right">
+                                <field name="total_transporte" readonly="1" digits="[16,2]"/>
+                            </group>
+
+                        </page>
+
+                        <!-- ═══ PRECIO FINAL ═══ -->
+                        <page string="Precio Final" name="precio_final">
+                            <!-- Desglose de costos: 3 columnas paralelas, mismo patrón que GGFF/Utilidad/Comisión -->
+                            <separator string="Desglose de costos"/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <group string="Materiales y Pre-Prensa">
+                                        <field name="total_papeles" string="Papeles" readonly="1" digits="[16,2]"/>
+                                        <field name="total_placas" string="Placas" readonly="1" digits="[16,2]"/>
+                                        <field name="total_offset" string="Offset" readonly="1" digits="[16,2]"/>
+                                        <field name="total_acabados" string="Acabados Carátula" readonly="1" digits="[16,2]"/>
+                                    </group>
+                                </div>
+                                <div class="col-md-4">
+                                    <group string="Producción">
+                                        <field name="total_doblado" string="Doblado" readonly="1" digits="[16,2]"/>
+                                        <field name="total_alce" string="Alce" readonly="1" digits="[16,2]"/>
+                                        <field name="total_cosido" string="Cosido" readonly="1" digits="[16,2]"/>
+                                        <field name="total_troquelado" string="Troquelado" readonly="1" digits="[16,2]"/>
+                                    </group>
+                                </div>
+                                <div class="col-md-4">
+                                    <group string="Post-Producción y Despacho">
+                                        <field name="total_encuadernado" string="Encuadernado" readonly="1" digits="[16,2]"/>
+                                        <field name="total_cortes" string="Cortes" readonly="1" digits="[16,2]"/>
+                                        <field name="total_empaquetado" string="Empaquetado" readonly="1" digits="[16,2]"/>
+                                        <field name="total_transporte" string="Transporte" readonly="1" digits="[16,2]"/>
+                                    </group>
+                                </div>
+                            </div>
+
+                            <!-- Subtotal + Distribución % en 2 columnas -->
+                            <group col="2">
+                                <group string="Subtotal">
+                                    <field name="precio_total" string="SUBTOTAL COSTOS"
+                                           readonly="1" digits="[16,2]" decoration-bf="1"
+                                           class="text-primary"/>
+                                </group>
+                                <group string="Distribución %">
+                                    <field name="pct_papel" string="% Papel" readonly="1"/>
+                                    <field name="pct_papel_placas" string="% Papel + Placas" readonly="1"/>
+                                    <field name="pct_papel_placas_offs" string="% Papel + Placas + Offset" readonly="1"/>
+                                </group>
+                            </group>
+
+                            <!-- Bloque 2: GGFF · Utilidad · Comisión LADO A LADO en 3 columnas -->
+                            <separator string="GGFF / Utilidad / Comisión (markup inclusivo)"/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <group string="GGFF">
+                                        <field name="pct_ggff" string="GGFF %"/>
+                                        <field name="ggff" string="+ GGFF" readonly="1" digits="[16,2]"/>
+                                        <field name="base_post_ggff" string="Total" readonly="1" digits="[16,2]"/>
+                                    </group>
+                                </div>
+                                <div class="col-md-4">
+                                    <group string="Utilidad">
+                                        <field name="pct_utilidad" string="Utilidad %"/>
+                                        <field name="utilidad" string="+ Utilidad" readonly="1" digits="[16,2]"/>
+                                        <field name="base_post_utilidad" string="Total" readonly="1" digits="[16,2]"/>
+                                    </group>
+                                </div>
+                                <div class="col-md-4">
+                                    <group string="Comisión">
+                                        <field name="pct_comision" string="Comisión %"/>
+                                        <field name="comision" string="+ Comisión" readonly="1" digits="[16,2]"/>
+                                    </group>
+                                </div>
+                            </div>
+
+                            <!-- Bloque 3: Precio final con/sin IGV -->
+                            <separator string="PRECIO FINAL"/>
+                            <group col="2">
+                                <group string="Sin IGV">
+                                    <field name="precio_final" string="P Total"
+                                           readonly="1" digits="[16,2]"
+                                           decoration-bf="1" class="text-primary"/>
+                                    <field name="precio_unitario" string="P Unitario"
+                                           readonly="1" digits="[16,2]"/>
+                                </group>
+                                <group string="Con IGV 18%">
+                                    <field name="precio_final_con_igv" string="P Total"
+                                           readonly="1" decoration-bf="1" class="text-success"/>
+                                    <field name="precio_unitario_con_igv" string="P Unitario" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- ═══ FÓRMULAS (debug) ═══ -->
+                        <page string="Fórmulas" name="formulas">
+                            <field name="formula_breakdown" readonly="1" nolabel="1"
+                                   widget="text"
+                                   style="font-family: monospace; font-size: 12px; background: #f8f9fa; padding: 12px; border-radius: 4px; white-space: pre; min-height: 300px;"/>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- LIST VIEW -->
+    <record id="view_print_quote_list" model="ir.ui.view">
+        <field name="name">impr.print.quote.list</field>
+        <field name="model">impr.print.quote</field>
+        <field name="arch" type="xml">
+            <list string="Cotizaciones">
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="nombre"/>
+                <field name="date"/>
+                <field name="tiraje_principal" string="Tiraje"/>
+                <field name="precio_final" string="P. Final s/IGV"/>
+                <field name="precio_unitario" string="P. Unitario" digits="[16,2]"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-primary="state == 'sent'"
+                       decoration-success="state == 'approved'"
+                       decoration-warning="state == 'production'"
+                       decoration-muted="state in ('done','cancelled')"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="view_print_quote_search" model="ir.ui.view">
+        <field name="name">impr.print.quote.search</field>
+        <field name="model">impr.print.quote</field>
+        <field name="arch" type="xml">
+            <search string="Buscar cotizaciones">
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="nombre"/>
+                <filter string="Borradores" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="Aprobadas" name="approved" domain="[('state','=','approved')]"/>
+                <filter string="En producción" name="production" domain="[('state','=','production')]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Cliente" name="group_client" context="{'group_by': 'client_id'}"/>
+                    <filter string="Estado" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Fecha" name="group_date" context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_print_quote" model="ir.actions.act_window">
+        <field name="name">Cotizaciones</field>
+        <field name="res_model">impr.print.quote</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_print_quote_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear primera cotización
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══ GRE — Form View ══ -->
+    <record id="view_impr_gre_form" model="ir.ui.view">
+        <field name="name">impr.gre.form</field>
+        <field name="model">impr.gre</field>
+        <field name="arch" type="xml">
+            <form string="Guía de Remisión Electrónica">
+                <header>
+                    <button name="action_send_sunat" string="Enviar a SUNAT"
+                            type="object" class="btn-primary"
+                            invisible="edi_state == 'accepted'"/>
+                    <button name="action_cancel" string="Anular"
+                            type="object" class="btn-danger"
+                            invisible="state in ['draft', 'cancelled']"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,sent,accepted"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Emisión">
+                            <field name="date_issue"/>
+                            <field name="date_transfer"/>
+                            <field name="transfer_reason"/>
+                            <field name="transport_mode"/>
+                        </group>
+                        <group string="Destinatario">
+                            <field name="partner_id"/>
+                            <field name="delivery_address"/>
+                            <field name="gross_weight"/>
+                            <field name="package_count"/>
+                        </group>
+                    </group>
+                    <group string="Transporte">
+                        <group>
+                            <field name="vehicle_plate"/>
+                            <field name="driver_name"/>
+                            <field name="driver_doc"/>
+                        </group>
+                        <group>
+                            <field name="carrier_id"
+                                   invisible="transport_mode == '02'"/>
+                        </group>
+                    </group>
+                    <group string="Vinculaciones">
+                        <field name="sale_order_id"/>
+                        <field name="production_id"/>
+                        <field name="picking_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Productos">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="description"/>
+                                    <field name="qty"/>
+                                    <field name="uom_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Respuesta SUNAT"
+                              invisible="edi_state == 'not_sent'">
+                            <group>
+                                <field name="edi_state"/>
+                                <field name="edi_send_date"/>
+                                <field name="edi_hash"/>
+                                <field name="edi_nubefact_link"
+                                       widget="url"
+                                       invisible="not edi_nubefact_link"/>
+                            </group>
+                            <field name="edi_error"
+                                   invisible="edi_state != 'rejected'"/>
+                            <field name="edi_cdr" widget="text" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- ══ GRE — List View ══ -->
+    <record id="view_impr_gre_tree" model="ir.ui.view">
+        <field name="name">impr.gre.list</field>
+        <field name="model">impr.gre</field>
+        <field name="arch" type="xml">
+            <list string="Guías de Remisión">
+                <field name="name"/>
+                <field name="date_issue"/>
+                <field name="date_transfer"/>
+                <field name="partner_id"/>
+                <field name="transfer_reason"/>
+                <field name="gross_weight"/>
+                <field name="edi_state"
+                       decoration-success="edi_state == 'accepted'"
+                       decoration-danger="edi_state == 'rejected'"
+                       decoration-muted="edi_state == 'not_sent'"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'accepted'"
+                       decoration-warning="state == 'sent'"
+                       decoration-muted="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ══ GRE — Action ══ -->
+    <record id="action_impr_gre" model="ir.actions.act_window">
+        <field name="name">Guías de Remisión (GRE)</field>
+        <field name="res_model">impr.gre</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear primera Guía de Remisión Electrónica
+            </p>
+            <p>
+                Las GRE documentan el traslado de mercadería y se envían
+                a SUNAT via Nubefact. Configure el token en Ajustes antes de enviar.
+            </p>
+        </field>
+    </record>
+
+</odoo>

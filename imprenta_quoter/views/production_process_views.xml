@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend mrp.production form: add Planificación tab -->
+    <record id="view_mrp_production_form_impr" model="ir.ui.view">
+        <field name="name">mrp.production.form.impr</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Planificación" name="impr_planning">
+                    <group>
+                        <field name="impr_quote_id" readonly="1"/>
+                        <field name="impr_wip_move_id" readonly="1"/>
+                    </group>
+                    <field name="process_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="process_template_id"/>
+                            <field name="name"/>
+                            <field name="workcenter_id" optional="show"/>
+                            <field name="duration_days"/>
+                            <field name="people_required"/>
+                            <field name="delay_days"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="qty_produced" optional="show"
+                                   decoration-muted="state == 'pending'"/>
+                            <field name="qty_waste" optional="show"
+                                   decoration-muted="state == 'pending'"/>
+                            <field name="waste_pct" optional="show" string="% Merma"
+                                   decoration-danger="waste_pct &gt; 5"
+                                   decoration-muted="state == 'pending'"/>
+                            <field name="cost_total" optional="show" string="Costo S/"
+                                   sum="Total costo"/>
+                            <field name="pct_total" optional="show" string="% s/ total"
+                                   sum="Suma %"/>
+                            <field name="supplier_id" optional="hide"/>
+                            <field name="purchase_order_id" optional="hide"/>
+                            <field name="state" widget="badge"
+                                   decoration-info="state == 'pending'"
+                                   decoration-primary="state == 'in_progress'"
+                                   decoration-success="state == 'done'"/>
+                            <button name="action_start" type="object" string="Iniciar"
+                                    icon="fa-play" class="btn-link"
+                                    invisible="state != 'pending'"/>
+                            <button name="action_mark_done" type="object" string="Completar"
+                                    icon="fa-check" class="btn-link text-success"
+                                    invisible="state != 'in_progress'"/>
+                        </list>
+                    </field>
+                    <!-- Gantt visual usando el widget OWL registrado como field -->
+                    <field name="process_ids" widget="impr_gantt_widget" readonly="1"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,222 @@
+<!--
+    Apps Marketplace landing page for Smart Print Quoter.
+    Compliant with Odoo Apps Vendor Guidelines:
+      - Bootstrap 4 classes only for layout.
+      - Inline styles limited to color, font-*, margin-*, padding-*, border-*.
+      - No JavaScript, no modals, no widgets, no static tags.
+      - All resources local to /static/description/.
+-->
+
+<!-- ═══ HERO BANNER ═══ -->
+<section class="oe_container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <img src="banner.png" alt="Smart Print Quoter"
+                 class="img-fluid rounded"/>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ TITLE + STAT CARDS ═══ -->
+<section class="oe_container py-5 bg-light">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 style="font-weight:700;">Smart Print Quoter</h1>
+            <p class="text-muted">From book specs to Sales Order in one click.</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card bg-dark text-white text-center border-0 h-100">
+                <div class="card-body">
+                    <div style="font-weight:700; font-size:24px; color:#22c55e;">100%</div>
+                    <div style="font-size:13px;">Native Odoo 18</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card bg-dark text-white text-center border-0 h-100">
+                <div class="card-body">
+                    <div style="font-weight:700; font-size:14px; color:#22c55e;">Built for</div>
+                    <div style="font-size:13px;">Offset Printing Shops</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card bg-dark text-white text-center border-0 h-100">
+                <div class="card-body">
+                    <div style="font-weight:700; font-size:24px; color:#fbbf24;">5 stars</div>
+                    <div style="font-size:13px;">Industry-Standard Formulas</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card bg-dark text-white text-center border-0 h-100">
+                <div class="card-body">
+                    <div style="font-weight:700; font-size:24px; color:#22c55e;">12+</div>
+                    <div style="font-size:13px;">Cost Sections</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card bg-dark text-white text-center border-0 h-100">
+                <div class="card-body">
+                    <div style="font-weight:700; font-size:24px; color:#22c55e;">1-Click</div>
+                    <div style="font-size:13px;">SO and MO Generation</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card bg-dark text-white text-center border-0 h-100">
+                <div class="card-body">
+                    <div style="font-weight:700; font-size:24px; color:#22c55e;">PE</div>
+                    <div style="font-size:13px;">l10n_pe Ready</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ MAIN PITCH ═══ -->
+<section class="oe_container py-5">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <h2 style="font-weight:700;">From book specs to Sales Order in one click</h2>
+            <p class="text-muted">
+                Replace your quoting spreadsheet with a structured,
+                ORM-backed model that computes paper, plates, machine
+                passes, finishing, folding, gathering, sewing, binding,
+                cutting, packaging, freight, GGFF / profit / commission
+                markup, IGV and final unit price automatically. On
+                approval, one click generates the Sales Order and
+                Manufacturing Order with the exact same components.
+            </p>
+            <ul class="list-unstyled mt-4">
+                <li class="bg-light p-3 mb-2 rounded">
+                    <strong>No double entry.</strong>
+                    Quote components flow into the Manufacturing Order unchanged.
+                </li>
+                <li class="bg-light p-3 mb-2 rounded">
+                    <strong>Auditable formulas.</strong>
+                    Every section is computed and stored.
+                </li>
+                <li class="bg-light p-3 mb-2 rounded">
+                    <strong>Multiple run sizes.</strong>
+                    Up to 5 alternatives per quote with auto-recalculated unit price.
+                </li>
+                <li class="bg-light p-3 mb-2 rounded">
+                    <strong>l10n_pe compatible.</strong>
+                    IGV 18%, SPOT detractions, SIRE export.
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <div style="font-weight:700;">Paper and Plates</div>
+                            <p class="text-muted mt-2 mb-0" style="font-size:13px;">
+                                Per-section pages, imposition, overage and machine factor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <div style="font-weight:700;">Offset</div>
+                            <p class="text-muted mt-2 mb-0" style="font-size:13px;">
+                                Per-millar machine passes, color front and back per section.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <div style="font-weight:700;">Finishing and Binding</div>
+                            <p class="text-muted mt-2 mb-0" style="font-size:13px;">
+                                Lamination, varnish, embossing, hot melt, sewn, hardcover wrap.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <div style="font-weight:700;">Weight and Logistics</div>
+                            <p class="text-muted mt-2 mb-0" style="font-size:13px;">
+                                Weight per book, books per box and tier-based freight pricing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <div style="font-weight:700;">Markup Waterfall</div>
+                            <p class="text-muted mt-2 mb-0" style="font-size:13px;">
+                                Inclusive percentage waterfall for GGFF, profit and commission.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card border h-100">
+                        <div class="card-body">
+                            <div style="font-weight:700;">Alt. Run Sizes</div>
+                            <p class="text-muted mt-2 mb-0" style="font-size:13px;">
+                                Up to 5 alternative run sizes per quote, each with its own re-calculated unit price.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SCREENSHOTS ═══ -->
+<section class="oe_container py-5 bg-light">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h2 style="font-weight:700;">Inside the app</h2>
+            <p class="text-muted">A look at the quote form and the per-section paper editor.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3 text-center">
+            <img src="screenshot_quote.png" alt="Quote form"
+                 class="img-fluid rounded border"/>
+        </div>
+        <div class="col-md-6 mb-3 text-center">
+            <img src="screenshot_papel.png" alt="Paper sections"
+                 class="img-fluid rounded border"/>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SUPPORT FOOTER ═══ -->
+<section class="oe_container py-5 bg-dark text-white">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="text-white" style="font-weight:700;">
+                Maintained by Emprendemos tu Web
+            </h2>
+            <p>
+                Website:
+                <a href="https://emprendemostuweb.com/" style="color:#22c55e;">
+                    emprendemostuweb.com
+                </a>
+            </p>
+            <p>
+                Email:
+                <a href="mailto:etwagency@proton.me" style="color:#22c55e;">
+                    etwagency@proton.me
+                </a>
+            </p>
+        </div>
+    </div>
+</section>

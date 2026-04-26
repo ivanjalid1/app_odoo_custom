@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_print_quote" model="ir.sequence">
+            <field name="name">Cotización Imprenta</field>
+            <field name="code">impr.print.quote</field>
+            <field name="prefix">IMP-%(year)s-</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="seq_gre" model="ir.sequence">
+            <field name="name">Guía de Remisión GRE</field>
+            <field name="code">impr.gre</field>
+            <field name="prefix">GRE-%(year)s-</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+    </data>
+</odoo>

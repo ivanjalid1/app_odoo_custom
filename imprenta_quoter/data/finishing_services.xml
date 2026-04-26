@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ══════════════════════════════════════════════════════
+             CATEGORÍA: ACABADOS (para pestaña "Acabados Carátula")
+        ══════════════════════════════════════════════════════ -->
+
+        <record id="finish_plast_brillo" model="impr.finishing.service">
+            <field name="name">Plastificado Brillo</field>
+            <field name="code">PLAST_BRILLO</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_plast_mate" model="impr.finishing.service">
+            <field name="name">Plastificado Mate</field>
+            <field name="code">PLAST_MATE</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_uv_brillo_sector" model="impr.finishing.service">
+            <field name="name">UV Brillo sector</field>
+            <field name="code">UV_BRILLO_SECTOR</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_hot_stamping" model="impr.finishing.service">
+            <field name="name">Hot Stamping</field>
+            <field name="code">HOT_STAMPING</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_repujado" model="impr.finishing.service">
+            <field name="name">Repujado</field>
+            <field name="code">REPUJADO</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_escarchado" model="impr.finishing.service">
+            <field name="name">Escarchado</field>
+            <field name="code">ESCARCHADO</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_barniz_brillo" model="impr.finishing.service">
+            <field name="name">Barniz Brillo</field>
+            <field name="code">BARNIZ_BRILLO</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_barniz_mate" model="impr.finishing.service">
+            <field name="name">Barniz Mate</field>
+            <field name="code">BARNIZ_MATE</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_barniz_acrilico_brillo" model="impr.finishing.service">
+            <field name="name">Barniz Acrílico Brillo</field>
+            <field name="code">BARNIZ_ACRILICO_BRILLO</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_barniz_acrilico" model="impr.finishing.service">
+            <field name="name">Barniz Acrílico Mate</field>
+            <field name="code">BARNIZ_AC</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_barniz_uv_brillo" model="impr.finishing.service">
+            <field name="name">UV Brillo</field>
+            <field name="code">BARNIZ_UV</field>
+            <field name="categoria">acabado</field>
+            <field name="price">100</field>
+            <field name="price_type">unit</field>
+            <field name="description">Clisse + barniz UV brillo por trabajo</field>
+        </record>
+
+        <record id="finish_barniz_uv_mate" model="impr.finishing.service">
+            <field name="name">UV Mate</field>
+            <field name="code">BARNIZ_UV_MATE</field>
+            <field name="categoria">acabado</field>
+            <field name="price">100</field>
+            <field name="price_type">unit</field>
+        </record>
+
+        <!-- Combos plastificado + algo (también acabados de carátula) -->
+        <record id="finish_plast_mate_uv" model="impr.finishing.service">
+            <field name="name">Plastificado Mate + UV Brillo</field>
+            <field name="code">PLAST_MATE_UV</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_plast_mate_escarcha" model="impr.finishing.service">
+            <field name="name">Plastificado Mate + Escarcha</field>
+            <field name="code">PLAST_MATE_ESC</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_plast_mate_repuja" model="impr.finishing.service">
+            <field name="name">Plastificado Mate + Repujado</field>
+            <field name="code">PLAST_MATE_REP</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_plast_mate_hotstamp" model="impr.finishing.service">
+            <field name="name">Plastificado Mate + Hot Stamping</field>
+            <field name="code">PLAST_MATE_HS</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_plast_forro_guarda" model="impr.finishing.service">
+            <field name="name">Plástico Forro y Guarda</field>
+            <field name="code">PLAST_FORRO</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_barniz_offset" model="impr.finishing.service">
+            <field name="name">Barnizado Offset</field>
+            <field name="code">BARNIZ_OFF</field>
+            <field name="categoria">acabado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+            <field name="description">Barniz offset incluido en impresión</field>
+        </record>
+
+        <record id="finish_linea_caratula" model="impr.finishing.service">
+            <field name="name">Línea de Carátula</field>
+            <field name="code">LINEA_CAR</field>
+            <field name="categoria">acabado</field>
+            <field name="price">35</field>
+            <field name="price_type">unit</field>
+            <field name="description">Precio fijo por trabajo</field>
+        </record>
+
+        <!-- ══════════════════════════════════════════════════════
+             CATEGORÍA: ENCUADERNADOS (para pestaña "Encuadernado")
+        ══════════════════════════════════════════════════════ -->
+
+        <record id="finish_hot_melt" model="impr.finishing.service">
+            <field name="name">Hot Melt</field>
+            <field name="code">HOTMELT</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">300</field>
+            <field name="price_type">unit</field>
+            <field name="description">Precio fijo por trabajo</field>
+        </record>
+
+        <record id="finish_pur" model="impr.finishing.service">
+            <field name="name">PUR</field>
+            <field name="code">PUR</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_cabezal_capitel" model="impr.finishing.service">
+            <field name="name">Cabezal y Capitel</field>
+            <field name="code">CABEZAL</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_forrado_tapa" model="impr.finishing.service">
+            <field name="name">Forrado de Tapa</field>
+            <field name="code">FORRADO</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_engrapado" model="impr.finishing.service">
+            <field name="name">Engrapado</field>
+            <field name="code">ENGRAPADO</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_remachado" model="impr.finishing.service">
+            <field name="name">Remachado</field>
+            <field name="code">REMACHADO</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_fastener" model="impr.finishing.service">
+            <field name="name">Fastener</field>
+            <field name="code">FASTENER</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_troquelado" model="impr.finishing.service">
+            <field name="name">Troquelado</field>
+            <field name="code">TROQUELADO</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_termosell_caja" model="impr.finishing.service">
+            <field name="name">Termosell Caja</field>
+            <field name="code">TERMOSELL_CAJA</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">7</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_termosell_libro" model="impr.finishing.service">
+            <field name="name">Termosell Libro</field>
+            <field name="code">TERMOSELL_LIBRO</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">0</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_cajas" model="impr.finishing.service">
+            <field name="name">Cajas (&lt; 20 kg)</field>
+            <field name="code">CAJAS</field>
+            <field name="categoria">encuadernado</field>
+            <field name="price">3</field>
+            <field name="price_type">unit</field>
+            <field name="description">Precio por caja</field>
+        </record>
+
+        <!-- ══════════════════════════════════════════════════════
+             CATEGORÍA: OTROS (doblado/alce/cosido/cortes/movilidad —
+             estos son procesos internos, no "acabados" ni "encuadernados"
+             pero se conservan para referencia/precios)
+        ══════════════════════════════════════════════════════ -->
+
+        <record id="finish_doblado" model="impr.finishing.service">
+            <field name="name">Doblado</field>
+            <field name="code">DOBLADO</field>
+            <field name="categoria">otros</field>
+            <field name="price">8</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_alce" model="impr.finishing.service">
+            <field name="name">Alce / Encartado</field>
+            <field name="code">ALCE</field>
+            <field name="categoria">otros</field>
+            <field name="price">8</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_cosido" model="impr.finishing.service">
+            <field name="name">Cosido</field>
+            <field name="code">COSIDO</field>
+            <field name="categoria">otros</field>
+            <field name="price">25</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_corte_inicial" model="impr.finishing.service">
+            <field name="name">Corte Inicial</field>
+            <field name="code">CORTE_INI</field>
+            <field name="categoria">otros</field>
+            <field name="price">3</field>
+            <field name="price_type">millar</field>
+        </record>
+
+        <record id="finish_corte_final" model="impr.finishing.service">
+            <field name="name">Corte Final</field>
+            <field name="code">CORTE_FIN</field>
+            <field name="categoria">otros</field>
+            <field name="price">20</field>
+            <field name="price_type">unit</field>
+            <field name="description">Precio fijo por trabajo</field>
+        </record>
+
+        <record id="finish_movilidad" model="impr.finishing.service">
+            <field name="name">Movilidad / Despacho</field>
+            <field name="code">MOVILIDAD</field>
+            <field name="categoria">otros</field>
+            <field name="price">0.5</field>
+            <field name="price_type">millar</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ═══════════════════════════════════════════════════
+             ANEXO 2 — BIENES (Detracción sobre venta de bienes)
+        ═══════════════════════════════════════════════════════ -->
+        <record id="detraccion_004" model="impr.detraccion.tipo">
+            <field name="codigo">004</field>
+            <field name="name">Recursos hidrobiológicos</field>
+            <field name="porcentaje">4.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">2</field>
+        </record>
+        <record id="detraccion_005" model="impr.detraccion.tipo">
+            <field name="codigo">005</field>
+            <field name="name">Maíz amarillo duro</field>
+            <field name="porcentaje">4.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">2</field>
+        </record>
+        <record id="detraccion_008" model="impr.detraccion.tipo">
+            <field name="codigo">008</field>
+            <field name="name">Madera</field>
+            <field name="porcentaje">4.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">2</field>
+        </record>
+        <record id="detraccion_009" model="impr.detraccion.tipo">
+            <field name="codigo">009</field>
+            <field name="name">Arena y piedra</field>
+            <field name="porcentaje">10.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">2</field>
+        </record>
+        <record id="detraccion_010" model="impr.detraccion.tipo">
+            <field name="codigo">010</field>
+            <field name="name">Residuos, subproductos, desechos, recortes y desperdicios</field>
+            <field name="porcentaje">15.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">2</field>
+        </record>
+        <record id="detraccion_014" model="impr.detraccion.tipo">
+            <field name="codigo">014</field>
+            <field name="name">Carnes y despojos comestibles</field>
+            <field name="porcentaje">4.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">2</field>
+        </record>
+        <record id="detraccion_017" model="impr.detraccion.tipo">
+            <field name="codigo">017</field>
+            <field name="name">Harina, polvo y pellets</field>
+            <field name="porcentaje">4.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">2</field>
+        </record>
+
+        <!-- ═══════════════════════════════════════════════════
+             ANEXO 3 — SERVICIOS
+        ═══════════════════════════════════════════════════════ -->
+        <record id="detraccion_019" model="impr.detraccion.tipo">
+            <field name="codigo">019</field>
+            <field name="name">Arrendamiento de bienes muebles</field>
+            <field name="porcentaje">10.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_020" model="impr.detraccion.tipo">
+            <field name="codigo">020</field>
+            <field name="name">Mantenimiento y reparación de bienes muebles</field>
+            <field name="porcentaje">12.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_021" model="impr.detraccion.tipo">
+            <field name="codigo">021</field>
+            <field name="name">Movimiento de carga</field>
+            <field name="porcentaje">10.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_022" model="impr.detraccion.tipo">
+            <field name="codigo">022</field>
+            <field name="name">Otros servicios empresariales</field>
+            <field name="porcentaje">12.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_024" model="impr.detraccion.tipo">
+            <field name="codigo">024</field>
+            <field name="name">Comisión mercantil</field>
+            <field name="porcentaje">10.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_025" model="impr.detraccion.tipo">
+            <field name="codigo">025</field>
+            <field name="name">Fabricación de bienes por encargo</field>
+            <field name="porcentaje">10.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_026" model="impr.detraccion.tipo">
+            <field name="codigo">026</field>
+            <field name="name">Servicio de transporte de personas</field>
+            <field name="porcentaje">10.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_027" model="impr.detraccion.tipo">
+            <field name="codigo">027</field>
+            <field name="name">Servicio de transporte de carga</field>
+            <field name="porcentaje">4.0</field>
+            <field name="umbral">400.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_030" model="impr.detraccion.tipo">
+            <field name="codigo">030</field>
+            <field name="name">Contratos de construcción</field>
+            <field name="porcentaje">4.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+        <record id="detraccion_037" model="impr.detraccion.tipo">
+            <field name="codigo">037</field>
+            <field name="name">Demás servicios gravados con IGV</field>
+            <field name="porcentaje">12.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+            <field name="notas">Código por defecto para servicios generales (imprenta, acabados, consultorías, etc.) cuando no aplica un código más específico.</field>
+        </record>
+        <record id="detraccion_040" model="impr.detraccion.tipo">
+            <field name="codigo">040</field>
+            <field name="name">Servicio de extracción de minerales no metálicos</field>
+            <field name="porcentaje">10.0</field>
+            <field name="umbral">700.0</field>
+            <field name="anexo">3</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Default invoice series and Nubefact placeholders. Override these
+        in System Parameters after installation with the values your
+        accountant provides.
+    -->
+    <data noupdate="0">
+
+        <record id="param_serie_factura" model="ir.config_parameter">
+            <field name="key">impr.serie_factura</field>
+            <field name="value">F001</field>
+        </record>
+
+        <record id="param_serie_boleta" model="ir.config_parameter">
+            <field name="key">impr.serie_boleta</field>
+            <field name="value">B001</field>
+        </record>
+
+        <record id="param_serie_nc" model="ir.config_parameter">
+            <field name="key">impr.serie_nc</field>
+            <field name="value">NC01</field>
+        </record>
+
+        <record id="param_serie_nd" model="ir.config_parameter">
+            <field name="key">impr.serie_nd</field>
+            <field name="value">ND01</field>
+        </record>
+
+        <record id="param_serie_gre" model="ir.config_parameter">
+            <field name="key">impr.serie_gre</field>
+            <field name="value">0001</field>
+        </record>
+
+        <!-- Nubefact placeholders — fill in after install -->
+        <record id="param_nubefact_url" model="ir.config_parameter">
+            <field name="key">impr.nubefact_url</field>
+            <field name="value">https://api.nubefact.com/api/v1</field>
+        </record>
+
+        <record id="param_nubefact_token" model="ir.config_parameter">
+            <field name="key">impr.nubefact_token</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="param_nubefact_ruc" model="ir.config_parameter">
+            <field name="key">impr.nubefact_ruc</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="param_ruc" model="ir.config_parameter">
+            <field name="key">impr.ruc</field>
+            <field name="value"></field>
+        </record>
+
+        <!-- SPOT detraction account numbers — fill in after install -->
+        <record id="param_cuenta_bn_detracciones" model="ir.config_parameter">
+            <field name="key">impr.cuenta_bn_detracciones</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="param_numero_virtual_sunat_detracciones" model="ir.config_parameter">
+            <field name="key">impr.numero_virtual_sunat_detracciones</field>
+            <field name="value"></field>
+        </record>
+
+    </data>
+</odoo>

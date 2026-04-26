@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista lista -->
+    <record id="view_detraccion_tipo_list" model="ir.ui.view">
+        <field name="name">impr.detraccion.tipo.list</field>
+        <field name="model">impr.detraccion.tipo</field>
+        <field name="arch" type="xml">
+            <list string="Tipos de Detracción SUNAT" default_order="anexo,codigo" class="impr_no_selector">
+                <field name="codigo"/>
+                <field name="name"/>
+                <field name="porcentaje" sum="Total"/>
+                <field name="umbral"/>
+                <field name="anexo"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista formulario -->
+    <record id="view_detraccion_tipo_form" model="ir.ui.view">
+        <field name="name">impr.detraccion.tipo.form</field>
+        <field name="model">impr.detraccion.tipo</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de Detracción SUNAT">
+                <sheet>
+                    <widget name="web_ribbon" title="Archivado" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h2><field name="name" placeholder="Ej. Demás servicios gravados con IGV"/></h2>
+                    </div>
+                    <group>
+                        <group string="Clasificación SUNAT">
+                            <field name="codigo" placeholder="037"/>
+                            <field name="anexo"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Cálculo">
+                            <field name="porcentaje"/>
+                            <field name="umbral"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notas" name="notas">
+                            <field name="notas" placeholder="Notas internas..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista búsqueda -->
+    <record id="view_detraccion_tipo_search" model="ir.ui.view">
+        <field name="name">impr.detraccion.tipo.search</field>
+        <field name="model">impr.detraccion.tipo</field>
+        <field name="arch" type="xml">
+            <search string="Buscar tipos de detracción">
+                <field name="codigo"/>
+                <field name="name"/>
+                <separator/>
+                <filter name="anexo_2" string="Anexo 2 — Bienes" domain="[('anexo', '=', '2')]"/>
+                <filter name="anexo_3" string="Anexo 3 — Servicios" domain="[('anexo', '=', '3')]"/>
+                <filter name="anexo_otros" string="Otros" domain="[('anexo', '=', 'otros')]"/>
+                <separator/>
+                <filter name="inactive" string="Archivados" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Agrupar por">
+                    <filter name="group_anexo" string="Anexo" context="{'group_by': 'anexo'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_detraccion_tipo" model="ir.actions.act_window">
+        <field name="name">Tipos de Detracción SUNAT</field>
+        <field name="res_model">impr.detraccion.tipo</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_detraccion_tipo_search"/>
+        <field name="context">{'search_default_group_anexo': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Crear un tipo de detracción SUNAT</p>
+            <p>Los códigos y porcentajes corresponden a los Anexos 2 y 3 de la Resolución SUNAT 183-2004.</p>
+        </field>
+    </record>
+
+    <!-- Menú: Facturación → Configuración → Tipos de Detracción SUNAT -->
+    <menuitem id="menu_detraccion_tipo"
+              name="Tipos de Detracción SUNAT"
+              parent="account.menu_finance_configuration"
+              action="action_detraccion_tipo"
+              sequence="-10"/>
+
+</odoo>

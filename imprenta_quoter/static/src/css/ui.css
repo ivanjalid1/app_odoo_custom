@@ -1,0 +1,198 @@
+/* ══════════════════════════════════════════════════════════
+   Smart Print Quoter — Global UI fixes for Odoo 18
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Purchase dashboard — fix etiquetas largas en español ─ */
+/* "Todas las solicitudes de cotización" no entra en g-col-3 (25%) */
+.o_purchase_dashboard .grid > div.text-break {
+    font-size: 11.5px;
+    line-height: 1.25;
+    word-break: normal;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 1400px) {
+    .o_purchase_dashboard .grid > div.text-break {
+        font-size: 10.5px;
+    }
+}
+
+@media (max-width: 992px) {
+    .o_purchase_dashboard .grid > div.text-break {
+        font-size: 11px;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+}
+
+/* ── Ocultar ícono "empty state" (documento con carita) ── */
+.o_view_nocontent_smiling_face {
+    display: none !important;
+}
+
+/* ── Stat buttons / KPI cards (purchase dashboard) ─────── */
+.o_stat_buttons .btn {
+    min-width: 90px;
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.o_stat_buttons .btn .o_stat_value {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.o_stat_buttons .btn .o_stat_text {
+    font-size: 11px;
+    line-height: 1.2;
+    white-space: normal;
+}
+
+/* ── Form view — grupos más respirados ─────────────────── */
+.o_form_view .o_group {
+    margin-bottom: 6px;
+}
+
+.o_form_view .o_wrap_field {
+    padding: 2px 0;
+}
+
+/* ── List view — filas más cómodas ─────────────────────── */
+.o_list_view .o_data_row td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 13px;
+}
+
+.o_list_view thead th {
+    font-size: 12px;
+}
+
+/* ── Responsive: pantallas ≤ 1280px ────────────────────── */
+@media (max-width: 1280px) {
+    .o_search_panel {
+        min-width: 140px;
+        max-width: 170px;
+    }
+
+    .o_search_panel_label_title {
+        font-size: 12px;
+    }
+
+    .o_content {
+        padding: 8px;
+    }
+}
+
+/* ── Responsive: pantallas ≤ 992px (tablets) ───────────── */
+@media (max-width: 992px) {
+    .o_search_panel {
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .o_stat_buttons {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .o_stat_buttons .btn {
+        flex: 1 1 calc(33% - 6px);
+        min-width: 80px;
+    }
+}
+
+/* ── Header / statusbar ────────────────────────────────── */
+.o_statusbar_status button {
+    font-size: 12px;
+    padding: 2px 8px;
+}
+
+/* ── Buttons en header del form ────────────────────────── */
+.o_form_view .o_form_statusbar .o_statusbar_buttons .btn {
+    font-size: 13px;
+    padding: 4px 12px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Tablas one2many — UNA SOLA barra horizontal
+   ══════════════════════════════════════════════════════════ */
+
+/* El wrapper O2M NO scrollea (deja que la tabla lo haga) */
+.o_form_view .o_field_one2many,
+.o_form_view .o_field_x2many {
+    overflow-x: visible !important;
+    max-width: 100%;
+}
+
+/* El list renderer (contenedor inmediato del <table>) SÍ scrollea */
+.o_form_view .o_field_one2many .o_list_renderer,
+.o_form_view .o_field_x2many .o_list_renderer {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    max-width: 100%;
+}
+
+/* La tabla interna tiene su ancho natural */
+.o_form_view .o_field_one2many .o_list_view table,
+.o_form_view .o_field_x2many .o_list_view table {
+    min-width: max-content;
+    width: auto;
+}
+
+/* Evitar scrollbars externos que compiten */
+.o_form_view .o_form_sheet,
+.o_form_view .o_form_sheet_bg,
+.o_form_view .o_notebook,
+.o_form_view .o_notebook > .tab-content,
+.o_form_view .o_notebook > .tab-content > .tab-pane {
+    overflow-x: hidden !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Chatter siempre abajo en FLUJO NORMAL (no sticky, no al costado)
+   Odoo 18 por defecto lo pone sticky al costado en pantallas anchas.
+   El equipo prefiere la vista clásica: chatter después del form,
+   ocupa todo el ancho, sin posición sticky ni altura fija.
+   ══════════════════════════════════════════════════════════ */
+.o_form_view .o_form_renderer,
+.o_form_view .o_form_renderer.o_xxl_form_view {
+    flex-direction: column !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+.o_form_view .o-mail-ChatterContainer,
+.o_form_view .o-mail-Form-Chatter,
+.o_form_view .o-mail-Chatter {
+    position: static !important;
+    top: auto !important;
+    bottom: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
+    overflow: visible !important;
+}
+
+.o_form_view .o_form_sheet_bg {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Ocultar checkbox de selección de fila SOLO en catálogos
+   de configuración marcados con la clase `impr_no_selector`.
+   Las operaciones en bloque sí siguen disponibles en facturas
+   y cotizaciones.
+   ══════════════════════════════════════════════════════════ */
+.o_list_view.impr_no_selector .o_list_record_selector,
+.o_list_view.impr_no_selector thead th.o_list_record_selector,
+.o_list_view.impr_no_selector tbody td.o_list_record_selector {
+    display: none !important;
+}

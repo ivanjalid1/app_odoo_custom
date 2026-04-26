@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_paper_material_tree" model="ir.ui.view">
+        <field name="name">impr.paper.material.tree</field>
+        <field name="model">impr.paper.material</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="largo"/>
+                <field name="ancho"/>
+                <field name="gramaje"/>
+                <field name="precio_kg"/>
+                <field name="unidad_paquete"/>
+                <field name="precio_resma_inc_igv" string="INC IGV (USD)" readonly="1"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_paper_material_form" model="ir.ui.view">
+        <field name="name">impr.paper.material.form</field>
+        <field name="model">impr.paper.material</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gramaje"/>
+                            <field name="precio_kg"/>
+                        </group>
+                        <group>
+                            <field name="largo"/>
+                            <field name="ancho"/>
+                            <field name="unidad_paquete"/>
+                            <field name="precio_resma_inc_igv" readonly="1"
+                                   string="Precio resma INC IGV (USD)"
+                                   decoration-bf="1" class="text-primary"
+                                   help="Precio total que vende la papelera (Excel columna W)."/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="uom_id"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_paper_material_search" model="ir.ui.view">
+        <field name="name">impr.paper.material.search</field>
+        <field name="model">impr.paper.material</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="gramaje"/>
+                <filter name="filter_bond" string="Bond" domain="[('name', 'ilike', 'bond')]"/>
+                <filter name="filter_couche" string="Couché" domain="[('name', 'ilike', 'couche')]"/>
+                <filter name="filter_book" string="Book Cream" domain="[('name', 'ilike', 'book')]"/>
+                <filter name="filter_duplex" string="Dúplex" domain="[('name', 'ilike', 'duplex')]"/>
+                <filter name="filter_carton" string="Cartón" domain="[('name', 'ilike', 'carton')]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_gramaje" string="Gramaje" context="{'group_by': 'gramaje'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_paper_material" model="ir.actions.act_window">
+        <field name="name">Materiales de papel</field>
+        <field name="res_model">impr.paper.material</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

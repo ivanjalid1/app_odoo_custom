@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Categoría de UdM para papel -->
+        <record id="uom_categ_papel" model="uom.category">
+            <field name="name">Papel</field>
+        </record>
+
+        <!-- Hoja (unidad base) -->
+        <record id="uom_hoja" model="uom.uom">
+            <field name="name">Hoja</field>
+            <field name="category_id" ref="uom_categ_papel"/>
+            <field name="uom_type">reference</field>
+            <field name="rounding">1</field>
+        </record>
+
+        <!-- Pliego = 1 Hoja -->
+        <record id="uom_pliego" model="uom.uom">
+            <field name="name">Pliego</field>
+            <field name="category_id" ref="uom_categ_papel"/>
+            <field name="uom_type">bigger</field>
+            <field name="factor_inv">1</field>
+            <field name="rounding">1</field>
+        </record>
+
+        <!-- Resma 100 hojas -->
+        <record id="uom_resma_100" model="uom.uom">
+            <field name="name">Resma 100h</field>
+            <field name="category_id" ref="uom_categ_papel"/>
+            <field name="uom_type">bigger</field>
+            <field name="factor_inv">100</field>
+            <field name="rounding">0.01</field>
+        </record>
+
+        <!-- Resma 250 hojas -->
+        <record id="uom_resma_250" model="uom.uom">
+            <field name="name">Resma 250h</field>
+            <field name="category_id" ref="uom_categ_papel"/>
+            <field name="uom_type">bigger</field>
+            <field name="factor_inv">250</field>
+            <field name="rounding">0.01</field>
+        </record>
+
+        <!-- Resma 500 hojas -->
+        <record id="uom_resma_500" model="uom.uom">
+            <field name="name">Resma 500h</field>
+            <field name="category_id" ref="uom_categ_papel"/>
+            <field name="uom_type">bigger</field>
+            <field name="factor_inv">500</field>
+            <field name="rounding">0.01</field>
+        </record>
+
+    </data>
+</odoo>

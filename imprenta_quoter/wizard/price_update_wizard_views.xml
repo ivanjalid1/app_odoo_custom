@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view -->
+    <record id="view_price_update_wizard_form" model="ir.ui.view">
+        <field name="name">impr.price.update.wizard.form</field>
+        <field name="model">impr.price.update.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Actualizar precios de materiales">
+                <group>
+                    <group>
+                        <field name="update_type" widget="radio"/>
+                    </group>
+                    <group>
+                        <field name="percentage"
+                               invisible="update_type != 'percentage'"/>
+                    </group>
+                </group>
+                <div class="mb-3">
+                    <button name="action_load_materials"
+                            string="Cargar materiales"
+                            type="object"
+                            class="btn-secondary"
+                            icon="fa-download"/>
+                    <button name="action_apply_percentage"
+                            string="Aplicar porcentaje"
+                            type="object"
+                            class="btn-secondary ms-2"
+                            icon="fa-percent"
+                            invisible="update_type != 'percentage'"/>
+                </div>
+                <field name="line_ids">
+                    <list editable="bottom">
+                        <field name="material_id" readonly="1"/>
+                        <field name="name" column_invisible="1"/>
+                        <field name="current_price"/>
+                        <field name="new_price"/>
+                    </list>
+                </field>
+                <footer>
+                    <button name="action_update_prices"
+                            string="Actualizar precios"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_price_update_wizard" model="ir.actions.act_window">
+        <field name="name">Actualizar precios</field>
+        <field name="res_model">impr.price.update.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="imprenta_quoter.GanttField">
+        <div class="impr-gantt-container">
+            <t t-if="state.loading">
+                <div class="text-center p-4">
+                    <i class="fa fa-spinner fa-spin fa-2x"/>
+                    <p class="mt-2">Cargando planificación...</p>
+                </div>
+            </t>
+            <t t-elif="!state.processes.length">
+                <div class="text-center text-muted p-4">
+                    <i class="fa fa-calendar-o fa-2x"/>
+                    <p class="mt-2">Agregue procesos en la tabla para ver el Gantt.</p>
+                </div>
+            </t>
+            <t t-else="">
+                <h5 class="mb-3">Diagrama Gantt</h5>
+                <div class="impr-gantt-chart">
+                    <t t-foreach="state.processes" t-as="process" t-key="process.id">
+                        <div class="impr-gantt-row d-flex align-items-center mb-1">
+                            <div class="impr-gantt-label" style="width:200px;flex-shrink:0;">
+                                <strong t-out="process.name"/>
+                                <br/>
+                                <small class="text-muted">
+                                    <t t-out="fmtDate(process.date_start)"/> -
+                                    <t t-out="fmtDate(process.date_end)"/>
+                                    | <i class="fa fa-users"/> <t t-out="process.people_required"/>
+                                </small>
+                            </div>
+                            <div class="impr-gantt-bar-container position-relative" style="flex:1;height:32px;">
+                                <div t-att-class="getBarClass(process)"
+                                     t-att-style="getBarStyle(process)"
+                                     style="position:absolute;top:2px;">
+                                    <span t-out="process.duration_days"/>d
+                                    <t t-if="process.state === 'in_progress'">
+                                        <button class="btn btn-sm btn-light ms-2 py-0 px-1"
+                                                t-on-click="() => this.onMarkDone(process.id)">
+                                            <i class="fa fa-check text-success"/>
+                                        </button>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

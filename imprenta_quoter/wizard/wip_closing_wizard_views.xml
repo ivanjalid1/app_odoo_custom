@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         CIERRE WIP — FIN DE MES
+         Wizard de cierre de Work In Progress al fin de cada período
+         Dr. 2311 Productos en Proceso / Cr. 60xx Compras / Materias Primas
+    ================================================================ -->
+
+    <!-- Form view -->
+    <record id="view_wip_closing_wizard_form" model="ir.ui.view">
+        <field name="name">impr.wip.closing.wizard.form</field>
+        <field name="model">impr.wip.closing.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cierre WIP — Fin de Mes">
+
+                <div class="alert alert-info mb-3" role="alert">
+                    <strong>Cierre WIP fin de mes.</strong>
+                    Se generará un asiento contable por cada Orden de Producción listada:
+                    <br/>
+                    <code>Dr. 2311 Productos en Proceso</code> /
+                    <code>Cr. 60xx Compras / Materia Prima</code>
+                    <br/>
+                    Ajuste el campo <strong>Costo en proceso al cierre</strong> si parte
+                    de los materiales ya no están en proceso.
+                </div>
+
+                <group>
+                    <group string="Parámetros de cierre">
+                        <field name="date"/>
+                        <field name="journal_id"/>
+                    </group>
+                    <group string="Totales">
+                        <field name="total_consumed" widget="monetary"
+                               options="{'currency_field': false}"
+                               readonly="1"/>
+                        <field name="total_wip" widget="monetary"
+                               options="{'currency_field': false}"
+                               readonly="1"/>
+                    </group>
+                </group>
+
+                <field name="line_ids" nolabel="1">
+                    <list editable="bottom"
+                          decoration-warning="wip_amount &lt; consumed_cost"
+                          decoration-info="wip_amount == consumed_cost">
+                        <field name="production_id" readonly="1" width="180"/>
+                        <field name="product_id" readonly="1"/>
+                        <field name="state" readonly="1" widget="badge"
+                               decoration-success="state == 'progress'"
+                               decoration-warning="state == 'to_close'"
+                               decoration-info="state == 'confirmed'"/>
+                        <field name="consumed_cost" readonly="1"
+                               string="Costo consumido (S/)"
+                               sum="Total consumido"/>
+                        <field name="wip_amount"
+                               string="Costo en proceso al cierre (S/)"
+                               sum="Total WIP"/>
+                    </list>
+                </field>
+
+                <footer>
+                    <button name="action_confirm"
+                            string="Confirmar y generar asientos"
+                            type="object"
+                            class="btn-primary"
+                            icon="fa-check"
+                            confirm="Se generarán asientos WIP para las OPs listadas. ¿Continuar?"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_wip_closing_wizard" model="ir.actions.act_window">
+        <field name="name">Cierre WIP — Fin de Mes</field>
+        <field name="res_model">impr.wip.closing.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

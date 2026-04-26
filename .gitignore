@@ -1,0 +1,29 @@
+# Originales sueltos (ya copiados al módulo) — no van al repo público
+freepik_*.png
+freepik_*.mp4
+icono.png
+banner_original.png
+screenshot_*.png
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Odoo
+*.pot
+.coverage
+htmlcov/

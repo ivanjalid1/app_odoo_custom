@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ============================================================
+             MONEDAS
+             ============================================================ -->
+
+        <!-- Ensure USD currency is active -->
+        <function model="res.currency" name="write">
+            <value eval="[ref('base.USD')]"/>
+            <value eval="{'active': True}"/>
+        </function>
+
+        <!-- Ensure PEN currency is active -->
+        <function model="res.currency" name="write">
+            <value eval="[ref('base.PEN')]"/>
+            <value eval="{'active': True}"/>
+        </function>
+
+    </data>
+
+    <!-- ============================================================
+         CONDICIONES DE PAGO PERUANAS (noupdate="0" — se recrean en cada -u)
+         Odoo 18: usa nb_days (no 'days'), delay_type='days_after',
+         y no existe 'balance' — todo es 'percent' sumando hasta 100%.
+         ============================================================ -->
+    <data noupdate="0">
+
+        <!-- Contado -->
+        <record id="payment_term_contado" model="account.payment.term">
+            <field name="name">Contado (Contra entrega)</field>
+            <field name="note">Pago inmediato contra entrega</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 0, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 15 días -->
+        <record id="payment_term_15dias" model="account.payment.term">
+            <field name="name">15 días</field>
+            <field name="note">Crédito a 15 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 15, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 21 días -->
+        <record id="payment_term_21dias" model="account.payment.term">
+            <field name="name">21 días</field>
+            <field name="note">Crédito a 21 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 21, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 30 días -->
+        <record id="payment_term_30dias" model="account.payment.term">
+            <field name="name">30 días</field>
+            <field name="note">Crédito a 30 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 30, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 45 días -->
+        <record id="payment_term_45dias" model="account.payment.term">
+            <field name="name">45 días</field>
+            <field name="note">Crédito a 45 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 45, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 60 días -->
+        <record id="payment_term_60dias" model="account.payment.term">
+            <field name="name">60 días</field>
+            <field name="note">Crédito a 60 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 60, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 75 días -->
+        <record id="payment_term_75dias" model="account.payment.term">
+            <field name="name">75 días</field>
+            <field name="note">Crédito a 75 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 75, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 90 días -->
+        <record id="payment_term_90dias" model="account.payment.term">
+            <field name="name">90 días</field>
+            <field name="note">Crédito a 90 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 90, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- 50% Adelanto / 50% Contraentrega -->
+        <record id="payment_term_50_50" model="account.payment.term">
+            <field name="name">50% Adelanto / 50% Contraentrega</field>
+            <field name="note">50% al inicio del trabajo, 50% contra entrega</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 50.0, 'nb_days': 0, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 50.0, 'nb_days': 0, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- Letras 2 — 2 cuotas (30 y 60 días) -->
+        <record id="payment_term_letras_2" model="account.payment.term">
+            <field name="name">Letras 2</field>
+            <field name="note">2 cuotas iguales a 30 y 60 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 50.0, 'nb_days': 30, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 50.0, 'nb_days': 60, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- Letras 3 — 3 cuotas (30, 60 y 90 días) -->
+        <record id="payment_term_letras_3" model="account.payment.term">
+            <field name="name">Letras 3</field>
+            <field name="note">3 cuotas iguales a 30, 60 y 90 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 33.34, 'nb_days':  30, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 33.33, 'nb_days':  60, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 33.33, 'nb_days':  90, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- Letras 4 — 4 cuotas (30, 60, 90 y 120 días) -->
+        <record id="payment_term_letras_4" model="account.payment.term">
+            <field name="name">Letras 4</field>
+            <field name="note">4 cuotas iguales a 30, 60, 90 y 120 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 25.0, 'nb_days':  30, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 25.0, 'nb_days':  60, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 25.0, 'nb_days':  90, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 25.0, 'nb_days': 120, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- Letras 1 — 1 cuota (30 días) -->
+        <record id="payment_term_letras_1" model="account.payment.term">
+            <field name="name">Letras 1</field>
+            <field name="note">1 cuota a 30 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 100.0, 'nb_days': 30, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- Letras 5 — 5 cuotas (30, 60, 90, 120, 150 días) -->
+        <record id="payment_term_letras_5" model="account.payment.term">
+            <field name="name">Letras 5</field>
+            <field name="note">5 cuotas iguales a 30, 60, 90, 120 y 150 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 20.0, 'nb_days':  30, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 20.0, 'nb_days':  60, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 20.0, 'nb_days':  90, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 20.0, 'nb_days': 120, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 20.0, 'nb_days': 150, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- Letras 6 — 6 cuotas (30 … 180 días) -->
+        <record id="payment_term_letras_6" model="account.payment.term">
+            <field name="name">Letras 6</field>
+            <field name="note">6 cuotas iguales a 30, 60, 90, 120, 150 y 180 días</field>
+            <field name="line_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'value': 'percent', 'value_amount': 16.67, 'nb_days':  30, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 16.67, 'nb_days':  60, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 16.67, 'nb_days':  90, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 16.67, 'nb_days': 120, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 16.67, 'nb_days': 150, 'delay_type': 'days_after'}),
+                (0, 0, {'value': 'percent', 'value_amount': 16.65, 'nb_days': 180, 'delay_type': 'days_after'})
+            ]"/>
+        </record>
+
+        <!-- ============================================================
+             PRECISIÓN DECIMAL — Product Price (8 decimales)
+             ============================================================ -->
+
+        <function model="decimal.precision" name="write">
+            <value eval="[ref('product.decimal_price')]"/>
+            <value eval="{'digits': 8}"/>
+        </function>
+
+        <!-- ============================================================
+             POST-INSTALL CONFIGURATION CHECKLIST (l10n_pe)
+             ============================================================
+
+        1. Accounting > Configuration > Settings:
+           - Enable multi-currency
+           - Configure FX-difference accounts:
+             * Gain: account 7761
+             * Loss: account 6761
+           - FX journal: "Exchange Rate Difference"
+           - PRICING: enable "Sale prices excluded of taxes" (IGV is added on top)
+
+        2. Electronic invoicing (SUNAT):
+           - Optional: integrate with Nubefact / OSE provider.
+           - invoice_edi.py and gre.py scaffolding ships disabled in the manifest.
+
+        3. Company data — fill via Settings > Companies:
+           - RUC, legal name, trade name, address.
+
+        4. Withholding (Retenciones):
+           - If the company IS a withholding agent, configure in l10n_pe.
+           - For customer-side withholdings, mark partner as "Withholding Agent".
+           - Account 4071xx for received withholdings.
+
+        5. Admin expenses:
+           - Expense account: 65** (general supplies)
+           - Destination accounts: 9x + 79 by cost center
+
+        6. SPOT detractions:
+           - Configure your physical BN account (10421) and SUNAT virtual
+             number (10731) in System Parameters after install.
+        ============================================================ -->
+
+    </data>
+</odoo>

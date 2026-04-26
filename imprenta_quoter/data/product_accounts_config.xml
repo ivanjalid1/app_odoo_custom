@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Asigna cuentas contables del PCGE peruano a categorías de productos.
+        Se ejecuta en CADA -u (noupdate="0") via <function>.
+
+        PCGE:
+          7021 / 702211  → Ingresos: Productos terminados (libros impresos)
+          60211          → Gastos: Materias primas — papeles
+          60212          → Gastos: Materias primas — cartones/dúplex
+          6021           → Gastos: Materias primas (fallback)
+    -->
+    <data noupdate="0">
+        <function model="product.category" name="_impr_setup_accounts"/>
+        <function model="product.category" name="_impr_setup_journals_and_taxes"/>
+    </data>
+</odoo>

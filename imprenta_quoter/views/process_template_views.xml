@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_process_template_list" model="ir.ui.view">
+        <field name="name">impr.process.template.list</field>
+        <field name="model">impr.process.template</field>
+        <field name="arch" type="xml">
+            <list string="Plantillas de proceso">
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_process_template_form" model="ir.ui.view">
+        <field name="name">impr.process.template.form</field>
+        <field name="model">impr.process.template</field>
+        <field name="arch" type="xml">
+            <form string="Plantilla de proceso">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" string="Proceso"/>
+                            <field name="code" string="Código"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <field name="description" string="Descripción"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_process_template" model="ir.actions.act_window">
+        <field name="name">Plantillas de proceso</field>
+        <field name="res_model">impr.process.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

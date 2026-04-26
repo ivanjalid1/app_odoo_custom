@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista lista -->
+    <record id="view_finishing_service_tree" model="ir.ui.view">
+        <field name="name">impr.finishing.service.list</field>
+        <field name="model">impr.finishing.service</field>
+        <field name="arch" type="xml">
+            <list string="Acabados / Encuadernados" editable="bottom" class="impr_no_selector">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="categoria"/>
+                <field name="price"/>
+                <field name="price_type"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista formulario -->
+    <record id="view_finishing_service_form" model="ir.ui.view">
+        <field name="name">impr.finishing.service.form</field>
+        <field name="model">impr.finishing.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archivado" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h2><field name="name"/></h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="categoria"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="price"/>
+                            <field name="price_type"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <group string="Contabilidad">
+                        <group>
+                            <field name="account_id"/>
+                        </group>
+                        <group>
+                            <field name="product_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Buscador -->
+    <record id="view_finishing_service_search" model="ir.ui.view">
+        <field name="name">impr.finishing.service.search</field>
+        <field name="model">impr.finishing.service</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <separator/>
+                <filter name="cat_acabado" string="Acabados" domain="[('categoria','=','acabado')]"/>
+                <filter name="cat_encuadernado" string="Encuadernados" domain="[('categoria','=','encuadernado')]"/>
+                <filter name="cat_otros" string="Otros" domain="[('categoria','=','otros')]"/>
+                <separator/>
+                <filter name="inactive" string="Archivados" domain="[('active','=',False)]"/>
+                <group expand="1" string="Agrupar por">
+                    <filter name="group_categoria" string="Categoría" context="{'group_by':'categoria'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Acción: Acabados -->
+    <record id="action_finishing_acabados" model="ir.actions.act_window">
+        <field name="name">Acabados</field>
+        <field name="res_model">impr.finishing.service</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('categoria','=','acabado')]</field>
+        <field name="context">{'default_categoria': 'acabado'}</field>
+        <field name="search_view_id" ref="view_finishing_service_search"/>
+    </record>
+
+    <!-- Acción: Encuadernados -->
+    <record id="action_finishing_encuadernados" model="ir.actions.act_window">
+        <field name="name">Encuadernados</field>
+        <field name="res_model">impr.finishing.service</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('categoria','=','encuadernado')]</field>
+        <field name="context">{'default_categoria': 'encuadernado'}</field>
+        <field name="search_view_id" ref="view_finishing_service_search"/>
+    </record>
+
+    <!-- Acción legacy: todos (mantiene compat con menu anterior) -->
+    <record id="action_finishing_service" model="ir.actions.act_window">
+        <field name="name">Acabados y Encuadernados</field>
+        <field name="res_model">impr.finishing.service</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_finishing_service_search"/>
+        <field name="context">{'search_default_group_categoria': 1}</field>
+    </record>
+
+    <!-- Menús bajo Configuración Facturación -->
+    <menuitem id="menu_finishing_acabados"
+              name="Acabados"
+              parent="account.menu_finance_configuration"
+              action="action_finishing_acabados"
+              sequence="-8"/>
+
+    <menuitem id="menu_finishing_encuadernados"
+              name="Encuadernados"
+              parent="account.menu_finance_configuration"
+              action="action_finishing_encuadernados"
+              sequence="-7"/>
+
+</odoo>

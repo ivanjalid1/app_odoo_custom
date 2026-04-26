@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ============================================================ -->
+        <!-- Product Categories for Paper Materials                       -->
+        <!-- ============================================================ -->
+
+        <record id="categ_papel_bond" model="product.category">
+            <field name="name">Papel Bond</field>
+        </record>
+
+        <record id="categ_papel_book" model="product.category">
+            <field name="name">Papel Book Cream</field>
+        </record>
+
+        <record id="categ_papel_couche_brillo" model="product.category">
+            <field name="name">Papel Couch&#233; Brillo</field>
+        </record>
+
+        <record id="categ_papel_couche_mate" model="product.category">
+            <field name="name">Papel Couch&#233; Mate</field>
+        </record>
+
+        <record id="categ_duplex" model="product.category">
+            <field name="name">D&#250;plex</field>
+        </record>
+
+        <record id="categ_carton" model="product.category">
+            <field name="name">Cart&#243;n</field>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Product records for BOND papers                              -->
+        <!-- ============================================================ -->
+
+        <record id="product_bond_056g_61x86" model="product.product">
+            <field name="name">BOND 056g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_056g_69x89" model="product.product">
+            <field name="name">BOND 056g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_056g_72x102" model="product.product">
+            <field name="name">BOND 056g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_075g_61x86" model="product.product">
+            <field name="name">BOND 075g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_075g_69x89" model="product.product">
+            <field name="name">BOND 075g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_075g_72x102" model="product.product">
+            <field name="name">BOND 075g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_090g_61x86" model="product.product">
+            <field name="name">BOND 090g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_090g_69x89" model="product.product">
+            <field name="name">BOND 090g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_090g_72x102" model="product.product">
+            <field name="name">BOND 090g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_120g_61x86" model="product.product">
+            <field name="name">BOND 120g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_120g_69x89" model="product.product">
+            <field name="name">BOND 120g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_120g_72x102" model="product.product">
+            <field name="name">BOND 120g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_150g_70x100" model="product.product">
+            <field name="name">BOND 150g  70X100</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_avena_70g_61x86" model="product.product">
+            <field name="name">BOND AVENA 70g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_avena_70g_72x102" model="product.product">
+            <field name="name">BOND AVENA 70g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_avena_80g_61x86" model="product.product">
+            <field name="name">BOND AVENA 80g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <record id="product_bond_avena_80g_72x102" model="product.product">
+            <field name="name">BOND AVENA 80g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_bond"/>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Product records for BOOK CREAM papers                        -->
+        <!-- ============================================================ -->
+
+        <record id="product_book_cream_60g_102x63" model="product.product">
+            <field name="name">BOOK CREAM 60g 102x63</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_book"/>
+        </record>
+
+        <record id="product_book_cream_60g_51x63" model="product.product">
+            <field name="name">BOOK CREAM 60g 51x63</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_book"/>
+        </record>
+
+        <record id="product_book_cream_60g_61x86" model="product.product">
+            <field name="name">BOOK CREAM 60g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_book"/>
+        </record>
+
+        <record id="product_book_cream_60g_72x102" model="product.product">
+            <field name="name">BOOK CREAM 60g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_book"/>
+        </record>
+
+        <record id="product_book_cream_60g_72x98" model="product.product">
+            <field name="name">BOOK CREAM 60g 72x98</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_book"/>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Product records for CARTON papers                            -->
+        <!-- ============================================================ -->
+
+        <record id="product_carton_kappa_1_5_arclad" model="product.product">
+            <field name="name">CARTON KAPPA 1.5 Arclad</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <record id="product_carton_kappa_1_8_arclad" model="product.product">
+            <field name="name">CARTON KAPPA 1.8 Arclad</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <record id="product_carton_kappa_2_0_arclad" model="product.product">
+            <field name="name">CARTON KAPPA 2.0 Arclad</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <record id="product_carton_kappa_2_5" model="product.product">
+            <field name="name">CARTON KAPPA 2.5</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <record id="product_carton_paja_1_5" model="product.product">
+            <field name="name">CARTON PAJA 1.5</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <record id="product_carton_paja_1_8" model="product.product">
+            <field name="name">CARTON PAJA 1.8</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <record id="product_carton_paja_2_0" model="product.product">
+            <field name="name">CARTON PAJA 2.0</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <record id="product_carton_paja_2_5" model="product.product">
+            <field name="name">CARTON PAJA 2.5</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_hoja"/>
+            <field name="categ_id" ref="categ_carton"/>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Product records for COUCHE BRILLO papers                     -->
+        <!-- ============================================================ -->
+
+        <record id="product_couche_brillo_090g_61x86" model="product.product">
+            <field name="name">COUCHE BRILLO 090g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_090g_69x89" model="product.product">
+            <field name="name">COUCHE BRILLO 090g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_090g_72x102" model="product.product">
+            <field name="name">COUCHE BRILLO 090g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_115g_61x86" model="product.product">
+            <field name="name">COUCHE BRILLO 115g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_115g_69x89" model="product.product">
+            <field name="name">COUCHE BRILLO 115g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_115g_72x102" model="product.product">
+            <field name="name">COUCHE BRILLO 115g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_150g_61x86" model="product.product">
+            <field name="name">COUCHE BRILLO 150g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_150g_69x89" model="product.product">
+            <field name="name">COUCHE BRILLO 150g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_150g_72x102" model="product.product">
+            <field name="name">COUCHE BRILLO 150g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_170g_61x86" model="product.product">
+            <field name="name">COUCHE BRILLO 170g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_170g_69x89" model="product.product">
+            <field name="name">COUCHE BRILLO 170g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_170g_72x102" model="product.product">
+            <field name="name">COUCHE BRILLO 170g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_200g_61x86" model="product.product">
+            <field name="name">COUCHE BRILLO 200g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_200g_69x89" model="product.product">
+            <field name="name">COUCHE BRILLO 200g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_200g_72x102" model="product.product">
+            <field name="name">COUCHE BRILLO 200g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_250g_61x86" model="product.product">
+            <field name="name">COUCHE BRILLO 250g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_250g_69x89" model="product.product">
+            <field name="name">COUCHE BRILLO 250g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_250g_72x102" model="product.product">
+            <field name="name">COUCHE BRILLO 250g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_300g_61x86" model="product.product">
+            <field name="name">COUCHE BRILLO 300g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_300g_69x89" model="product.product">
+            <field name="name">COUCHE BRILLO 300g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <record id="product_couche_brillo_300g_72x102" model="product.product">
+            <field name="name">COUCHE BRILLO 300g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_brillo"/>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Product records for COUCHE MATE papers                       -->
+        <!-- ============================================================ -->
+
+        <record id="product_couche_mate_090g_61x86" model="product.product">
+            <field name="name">COUCHE MATE 090g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_090g_69x89" model="product.product">
+            <field name="name">COUCHE MATE 090g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_115g_61x86" model="product.product">
+            <field name="name">COUCHE MATE 115g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_115g_69x89" model="product.product">
+            <field name="name">COUCHE MATE 115g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_115g_72x102" model="product.product">
+            <field name="name">COUCHE MATE 115g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_150g_61x86" model="product.product">
+            <field name="name">COUCHE MATE 150g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_150g_69x89" model="product.product">
+            <field name="name">COUCHE MATE 150g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_150g_72x102" model="product.product">
+            <field name="name">COUCHE MATE 150g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_170g_72x102" model="product.product">
+            <field name="name">COUCHE MATE 170g  72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_170g_61x86" model="product.product">
+            <field name="name">COUCHE MATE 170g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_170g_69x89" model="product.product">
+            <field name="name">COUCHE MATE 170g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_200g_61x86" model="product.product">
+            <field name="name">COUCHE MATE 200g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_200g_69x89" model="product.product">
+            <field name="name">COUCHE MATE 200g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_200g_72x102" model="product.product">
+            <field name="name">COUCHE MATE 200g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_250"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_250g_61x86" model="product.product">
+            <field name="name">COUCHE MATE 250g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_250g_69x89" model="product.product">
+            <field name="name">COUCHE MATE 250g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_250g_72x102" model="product.product">
+            <field name="name">COUCHE MATE 250g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_300g_61x86" model="product.product">
+            <field name="name">COUCHE MATE 300g 61x86</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_300g_69x89" model="product.product">
+            <field name="name">COUCHE MATE 300g 69x89</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <record id="product_couche_mate_300g_72x102" model="product.product">
+            <field name="name">COUCHE MATE 300g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <!-- COUCHEMATE (variant without space) - categorized as Couche Mate -->
+        <record id="product_couchemate_090g_72x102" model="product.product">
+            <field name="name">COUCHEMATE 090g 72x102</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_500"/>
+            <field name="categ_id" ref="categ_papel_couche_mate"/>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Product records for DUPLEX papers                            -->
+        <!-- ============================================================ -->
+
+        <record id="product_duplex_12_100x70_fc" model="product.product">
+            <field name="name">DUPLEX 12 100x70 FC</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_12_70x1000fl" model="product.product">
+            <field name="name">DUPLEX 12 70x1000FL</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_14_100x61_fc" model="product.product">
+            <field name="name">DUPLEX 14 100x61 FC</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_14_100x70_dusup_fc" model="product.product">
+            <field name="name">DUPLEX 14 100x70 DUSUP FC</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_14_100x70_zenith_fc" model="product.product">
+            <field name="name">DUPLEX 14 100x70 ZENITH FC</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_14_70x100_dusup_fl" model="product.product">
+            <field name="name">DUPLEX 14 70x100 DUSUP  FL</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_14_70x100_zenith_fl" model="product.product">
+            <field name="name">DUPLEX 14 70x100 ZENITH FL</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_16_70x100_fl" model="product.product">
+            <field name="name">DUPLEX 16 70x100 FL</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex16_100x70_fc" model="product.product">
+            <field name="name">DUPLEX16 100x70 FC</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex_16_70x100_fl_320" model="product.product">
+            <field name="name">DUPLEX 16 70x100 FL 320g</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <record id="product_duplex16_100x70_fc_320" model="product.product">
+            <field name="name">DUPLEX16 100x70 FC 320g</field>
+            <field name="type">consu</field>
+            <field name="is_storable" eval="True"/>
+            <field name="uom_id" ref="uom_hoja"/>
+            <field name="uom_po_id" ref="uom_resma_100"/>
+            <field name="categ_id" ref="categ_duplex"/>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Link paper materials to their product.product records        -->
+        <!-- ============================================================ -->
+
+        <!-- BOND papers -->
+        <record id="paper_bond_056g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_056g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_056g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_056g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_056g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_056g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_075g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_075g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_075g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_075g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_075g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_075g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_090g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_090g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_090g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_090g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_090g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_090g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_120g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_120g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_120g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_120g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_120g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_120g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_150g_70x100" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_150g_70x100"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_avena_70g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_avena_70g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_avena_70g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_avena_70g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_avena_80g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_avena_80g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_bond_avena_80g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_bond_avena_80g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <!-- BOOK CREAM papers -->
+        <record id="paper_book_cream_60g_102x63" model="impr.paper.material">
+            <field name="product_id" ref="product_book_cream_60g_102x63"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_book_cream_60g_51x63" model="impr.paper.material">
+            <field name="product_id" ref="product_book_cream_60g_51x63"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_book_cream_60g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_book_cream_60g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_book_cream_60g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_book_cream_60g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_book_cream_60g_72x98" model="impr.paper.material">
+            <field name="product_id" ref="product_book_cream_60g_72x98"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <!-- CARTON papers -->
+        <record id="paper_carton_kappa_1_5_arclad" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_kappa_1_5_arclad"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_carton_kappa_1_8_arclad" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_kappa_1_8_arclad"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_carton_kappa_2_0_arclad" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_kappa_2_0_arclad"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_carton_kappa_2_5" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_kappa_2_5"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_carton_paja_1_5" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_paja_1_5"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_carton_paja_1_8" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_paja_1_8"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_carton_paja_2_0" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_paja_2_0"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_carton_paja_2_5" model="impr.paper.material">
+            <field name="product_id" ref="product_carton_paja_2_5"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <!-- COUCHE BRILLO papers -->
+        <record id="paper_couche_brillo_090g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_090g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_090g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_090g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_090g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_090g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_115g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_115g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_115g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_115g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_115g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_115g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_150g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_150g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_150g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_150g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_150g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_150g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_170g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_170g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_170g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_170g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_170g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_170g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_200g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_200g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_200g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_200g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_200g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_200g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_250g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_250g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_250g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_250g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_250g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_250g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_300g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_300g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_300g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_300g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_brillo_300g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_brillo_300g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <!-- COUCHE MATE papers -->
+        <record id="paper_couche_mate_090g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_090g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_090g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_090g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_115g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_115g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_115g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_115g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_115g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_115g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_150g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_150g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_150g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_150g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_150g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_150g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_170g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_170g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_170g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_170g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_170g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_170g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_200g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_200g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_200g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_200g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_200g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_200g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_250g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_250g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_250g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_250g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_250g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_250g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_300g_61x86" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_300g_61x86"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_300g_69x89" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_300g_69x89"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couche_mate_300g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couche_mate_300g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_couchemate_090g_72x102" model="impr.paper.material">
+            <field name="product_id" ref="product_couchemate_090g_72x102"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <!-- DUPLEX papers -->
+        <record id="paper_duplex_12_100x70_fc" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_12_100x70_fc"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_12_70x1000fl" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_12_70x1000fl"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_14_100x61_fc" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_14_100x61_fc"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_14_100x70_dusup_fc" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_14_100x70_dusup_fc"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_14_100x70_zenith_fc" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_14_100x70_zenith_fc"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_14_70x100_dusup_fl" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_14_70x100_dusup_fl"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_14_70x100_zenith_fl" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_14_70x100_zenith_fl"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_16_70x100_fl" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_16_70x100_fl"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex16_100x70_fc" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex16_100x70_fc"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex_16_70x100_fl_320" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex_16_70x100_fl_320"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+        <record id="paper_duplex16_100x70_fc_320" model="impr.paper.material">
+            <field name="product_id" ref="product_duplex16_100x70_fc_320"/>
+            <field name="uom_id" ref="uom_hoja"/>
+        </record>
+
+
+        <record id="product_trabajo_impresion" model="product.template">
+            <field name="name">Trabajo de Impresión</field>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="True"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="invoice_policy">order</field>
+        </record>
+
+    </data>
+</odoo>

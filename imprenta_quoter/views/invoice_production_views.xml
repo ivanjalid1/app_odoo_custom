@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACCOUNT.MOVE — Agregar campo Orden de Producción
+         Aplica a facturas de cliente y facturas de proveedor
+    ═══════════════════════════════════════════════════════════════ -->
+    <record id="view_move_form_inherit_impr_production" model="ir.ui.view">
+        <field name="name">account.move.form.impr.production</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Fecha de registro: cuándo se ingresó el comprobante al sistema (para SIRE) -->
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="impr_fecha_registro"/>
+                <field name="impr_car_sunat" placeholder="CAR emitido por SUNAT (SEE/SIRE)"/>
+            </xpath>
+            <!-- Inject after the "ref" field in the header info area -->
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="impr_production_id"
+                       options="{'no_create': True, 'no_open': False}"
+                       placeholder="Buscar OP (ej. WH/MO/00005)"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         MRP.PRODUCTION — Smart button Facturas
+    ═══════════════════════════════════════════════════════════════ -->
+    <record id="mrp_production_form_inherit_impr_invoices" model="ir.ui.view">
+        <field name="name">mrp.production.form.impr.invoices</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[contains(@class,'oe_button_box')]" position="inside">
+                <button name="action_view_invoices"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-file-text-o"
+                        invisible="invoice_count == 0">
+                    <field name="invoice_count" widget="statinfo" string="Facturas"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_print_quote" model="ir.actions.report">
+        <field name="name">Cotización Imprenta</field>
+        <field name="model">impr.print.quote</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">imprenta_quoter.report_print_quote</field>
+        <field name="report_file">imprenta_quoter.report_print_quote</field>
+        <field name="binding_model_id" ref="model_impr_print_quote"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_import_partners_wizard_form" model="ir.ui.view">
+        <field name="name">impr.import.partners.wizard.form</field>
+        <field name="model">impr.import.partners.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Importar Clientes / Proveedores">
+                <group invisible="state == 'done'">
+                    <group string="Configuración">
+                        <field name="import_type" widget="radio"/>
+                        <field name="delimiter"/>
+                    </group>
+                    <group string="Archivo">
+                        <field name="file_data" filename="file_name" widget="binary"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                </group>
+
+                <!-- Instrucciones -->
+                <group string="Formato del CSV" invisible="state == 'done'">
+                    <div class="alert alert-info" role="alert">
+                        <strong>Columnas requeridas:</strong> nombre, ruc<br/>
+                        <strong>Columnas opcionales:</strong> telefono, email, direccion, distrito, ciudad<br/>
+                        La primera fila debe ser el encabezado (nombres de columnas).<br/>
+                        Si el RUC ya existe en el sistema, el registro se actualiza.
+                    </div>
+                </group>
+
+                <!-- Resultado -->
+                <group string="Resultado" invisible="state != 'done'">
+                    <field name="result_message" readonly="1" nolabel="1"
+                           widget="text" style="white-space: pre-wrap; font-family: monospace;"/>
+                </group>
+
+                <footer>
+                    <button name="action_import" type="object"
+                            string="Importar" class="btn-primary"
+                            invisible="state == 'done'"/>
+                    <button string="Cerrar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_import_partners_wizard" model="ir.actions.act_window">
+        <field name="name">Importar Clientes / Proveedores</field>
+        <field name="res_model">impr.import.partners.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

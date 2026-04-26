@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- SIRE Export Wizard Form View -->
+    <record id="impr_sire_export_wizard_form" model="ir.ui.view">
+        <field name="name">impr.sire.export.wizard.form</field>
+        <field name="model">impr.sire.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Exportar SIRE">
+                <group invisible="state != 'draft'">
+                    <group>
+                        <field name="register_type"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <p class="text-muted">
+                            Genera el archivo TXT en formato SIRE para presentar
+                            ante SUNAT. Seleccione el tipo de registro y el rango
+                            de fechas para exportar los comprobantes.
+                        </p>
+                    </group>
+                </group>
+                <group invisible="state != 'done'">
+                    <group>
+                        <field name="file_data" filename="file_name" widget="binary"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <group>
+                        <p class="text-success">
+                            Archivo generado exitosamente. Haga clic en el enlace
+                            para descargar el archivo TXT.
+                        </p>
+                    </group>
+                </group>
+                <field name="state" invisible="1"/>
+                <footer>
+                    <button string="Generar TXT"
+                            name="action_export"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button string="Cerrar"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open the wizard -->
+    <record id="action_impr_sire_export_wizard" model="ir.actions.act_window">
+        <field name="name">Exportar SIRE (SUNAT)</field>
+        <field name="res_model">impr.sire.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item bajo Facturación (account.menu_finance existe en Community) -->
+    <menuitem id="menu_impr_sire_export"
+              name="Exportar SIRE (SUNAT)"
+              parent="account.menu_finance"
+              action="action_impr_sire_export_wizard"
+              sequence="100"/>
+
+</odoo>

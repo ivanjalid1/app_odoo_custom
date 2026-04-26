@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Stock Locations (children of WH/Stock) -->
+
+        <record id="location_papel_bond" model="stock.location">
+            <field name="name">Papel Bond</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="location_papel_couche" model="stock.location">
+            <field name="name">Papel Couché</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="location_cartones" model="stock.location">
+            <field name="name">Cartones y Dúplex</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="location_acabados" model="stock.location">
+            <field name="name">Insumos de Acabado</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="location_terceros_transito" model="stock.location">
+            <field name="name">En tránsito — Terceros</field>
+            <field name="usage">transit</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <!-- Subcontracting Suppliers -->
+
+        <record id="partner_alcigraf" model="res.partner">
+            <field name="name">Alcigraf</field>
+            <field name="supplier_rank">1</field>
+            <field name="company_type">company</field>
+        </record>
+
+        <record id="partner_airum" model="res.partner">
+            <field name="name">Airum</field>
+            <field name="supplier_rank">1</field>
+            <field name="company_type">company</field>
+        </record>
+
+        <!-- Reorderpoint Rules — references product IDs from product_data.xml -->
+
+        <record id="orderpoint_bond_090g_72x102" model="stock.warehouse.orderpoint">
+            <field name="product_id" ref="product_bond_090g_72x102"/>
+            <field name="location_id" ref="location_papel_bond"/>
+            <field name="product_min_qty">50</field>
+            <field name="product_max_qty">200</field>
+        </record>
+
+        <record id="orderpoint_book_cream_60g_72x102" model="stock.warehouse.orderpoint">
+            <field name="product_id" ref="product_book_cream_60g_72x102"/>
+            <field name="location_id" ref="location_papel_bond"/>
+            <field name="product_min_qty">30</field>
+            <field name="product_max_qty">150</field>
+        </record>
+
+        <record id="orderpoint_couche_brillo_090g_72x102" model="stock.warehouse.orderpoint">
+            <field name="product_id" ref="product_couche_brillo_090g_72x102"/>
+            <field name="location_id" ref="location_papel_couche"/>
+            <field name="product_min_qty">20</field>
+            <field name="product_max_qty">100</field>
+        </record>
+
+    </data>
+</odoo>
