@@ -42,7 +42,7 @@ Tested on Odoo 18 Community.
     'website': 'https://emprendemostuweb.com/',
     'support': 'etwagency@proton.me',
     'license': 'OPL-1',
-    'price': 199.00,
+    'price': 50.00,
     'currency': 'USD',
     'images': ['static/description/banner.png'],
     'depends': [
